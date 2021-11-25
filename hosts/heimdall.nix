@@ -10,8 +10,13 @@
   system.stateVersion = "21.05";
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  # Use latest kernel
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Enable NTFS support
+  boot.supportedFilesystems = [ "ntfs" ];
+  #boot.extraModulePackages = [ pkgs.simon.linuxPackages_latest.vmware-host-modules ];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -19,13 +24,12 @@
       "experimental-features = nix-command flakes";
   };
 
-  #imports =
-  #  [
-  #    ./hardware-configuration.nix
-  #  ];
+  #nixpkgs.config.packageOverrides = pkgs: {
+  #  linuxPackages_latest = pkgs.unstable.linuxPackages_latest;
+  #  nvidia_x11 = pkgs.unstable.nvidia_x11;
+  #};
 
-  # Enable NTFS support
-  boot.supportedFilesystems = [ "ntfs" ];
+  #services.xserver.videoDrivers = [ "nvidia" ];
 
   networking = {
     hostName = "heimdall";
@@ -40,30 +44,50 @@
     # Utils
     alacritty
     ag
-    gparted
+    killall
+    parted
+    wget
+    curl
+    #debootstrap
+    xorg.xhost # Allow X app to run as root with "xhost si:localuser:root", disallow with "xhost -si:localuser:root"
+    imagemagick
+    #gimp
+    xdg-utils
 
     # Media
-    spotify
-    vlc
+    #spotify
+    #spicetify-cli
+    #vlc
+    #pulseaudio # For pactl
 
     # Web
     firefox
-    mailspring
+    #mailspring
     element-desktop
+    #signal-desktop
 
     # Dev
     git
-    virt-manager
+    #virt-manager
     unzip
-    wineWowPackages.stable
-    winetricks
+    docker-compose
+    #wineWowPackages.stable
+    #winetricks
     #vmware-vdiskmanager
+
+    # Artsy
+    #lightburn
+    #inkscape
+    #unstable.snapmaker-luban
 
     # Editor
     (unstable.neovim.override {
       viAlias = true;
       vimAlias = true;
     })
+
+    # Office
+    #libreoffice
   ];
 
   #hardware.nvidia.prime = {
@@ -72,13 +96,8 @@
   #  nvidiaBusId = "PCI:1:0:0";
   #};
 
-  # Need this to build for Raspberry Pi aarch64
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.virtualbox.host.enable = true;
   programs.dconf.enable = true;
+  programs.gnupg.agent.enable = true;
 
   nix.gc = {
     automatic = true;
@@ -86,42 +105,45 @@
     options = "--delete-older-than 7d";
   };
 
+  # Debian chroot
+  #systemd.targets.machines.enable = true;
+  #systemd.nspawn."debian-bullseye" = {
+  #  enable = true;
+  #  execConfig = {
+  #    Boot = true;
+  #    Environment = "DISPLAY=:0";
+  #  };
+  #  filesConfig = {
+  #    "BindReadOnly" = [
+  #      "/tmp/.X11-unix"
+  #    ];
+  #    "Bind" = [
+  #      "/data"
+  #    ];
+  #  };
+  #  networkConfig = {
+  #    Private = false;
+  #    VirtualEthernet = false;
+  #  };
+  #};
+  #systemd.services."systemd-nspawn@debian-bullseye" = {
+  #  enable = true;
+  #  wantedBy = lib.mkForce [ ];#[ "machines.target" ];
+  #};
+  security.rtkit.enable = true;
+
   services = {
     avahi.enable = true;
-    gvfs.enable = true;
-    udisks2.enable = true;
-    gnome.gnome-keyring.enable = true;
 
     printing = {
       enable = true;
-      drivers = [ pkgs.canon-cups-ufr2 ];
+      #drivers = [ pkgs.canon-cups-ufr2 ];
     };
 
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_SCALING_GOVERNOR_ON_AC="performance";
-
-        # The following prevents the battery from charging fully to
-        # preserve lifetime. Run `tlp fullcharge` to temporarily force
-        # full charge.
-        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-        #START_CHARGE_THRESH_BAT0=40;
-        #STOP_CHARGE_THRESH_BAT0=50;
-
-        # 100 being the maximum, limit the speed of my CPU to reduce
-        # heat and increase battery usage:
-        CPU_MAX_PERF_ON_AC=100;
-        CPU_MAX_PERF_ON_BAT=50;
-      };
-    };
   };
 
-  programs.seahorse.enable = true;
-
   users.mutableUsers = true;
-  users.users.simon = {
+  users.users.linetic = {
     isNormalUser = true;
     description = "";
     group = "users";
@@ -130,5 +152,5 @@
     shell = pkgs.fish;
   };
 
-  nix.trustedUsers = [ "root" "simon" ];
+  nix.trustedUsers = [ "root" "linetic" ];
 }

@@ -1,11 +1,16 @@
 {
   description = "Structured configuration database";
 
-  nixConfig.extra-experimental-features = "nix-command flakes";
+  #nixConfig.extra-experimental-features = "nix-command flakes";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
+    #nixpkgs-wayland = { url = "github:nix-community/nixpkgs-wayland"; };
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    simon.url = "github:simonkampe/nixpkgs/vmware-host-modules";
+
+    #nixpkgs-wayland.inputs.nixpkgs.follows = "cmpkgs";
+    #nixpkgs-wayland.inputs.master.follows = "master";
   };
 
   outputs = inputs@{
@@ -20,6 +25,7 @@
       config = {
         allowUnfree = true;
       };
+      #overlays = [ inputs.nixpkgs-wayland.overlay ] ++ attrValues self.overlays;
       overlays = attrValues self.overlays;
     };
   in
@@ -31,6 +37,12 @@
           config.allowUnfree = true;
         };
       };
+      simon = final: prev: {
+        simon = import inputs.simon {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      };
     };
 
     nixosConfigurations.heimdall = nixpkgs.lib.nixosSystem {
@@ -38,10 +50,9 @@
 
       modules = [
         hosts/heimdall.nix
-        hosts/heimdall/hardware-configuration.nix
+        hardware/vmware.nix
         common/locale.nix
-        hardware/tp1g3.nix
-        graphical/sway.nix
+        graphical/kde.nix
       ];
 
       inherit pkgs;

@@ -22,7 +22,10 @@
     xfce.thunar-volman
     xfce.xfconf # To save preferences
     xfce.tumbler # For thumbnails
-    pop-icon-theme
+    arc-icon-theme
+    udiskie
+    gnome.networkmanagerapplet
+    gnome.gnome-keyring
 
     # Utils
     pavucontrol
@@ -35,5 +38,15 @@
 
   programs = {
     ssh.startAgent = true;
+    seahorse.enable = true;
+  };
+
+  services = {
+    gvfs.enable = true;
+    udisks2.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      at-spi2-core.enable = true;
+    };
   };
 }

@@ -20,7 +20,7 @@
   };
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "Hermit" "Iosevka" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "Hermit" ]; })
     comfortaa
     noto-fonts
     material-design-icons

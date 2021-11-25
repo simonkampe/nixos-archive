@@ -4,26 +4,21 @@ stdenv.mkDerivation rec {
   name = "vmware-vdiskmanager";
 
   src = pkgs.requireFile {
-    name = "1023856-vdiskmanager-linux.7.0.1.zip";
-    sha256 = "c34ebf57a9fccdeaf6b989f613e2418bb71894a51e0694b933307cbcbb9d706d";
+    name = "VMware-vix-disklib-7.0.3-18705163.x86_64.tar.gz";
+    sha256 = "d7cffd87dc806dccaa267e48008d5b3a4fbea56fc24701e93676659583f92bb6";
     message = ''
       Unfortunately, we cannot download this automatically.
 
-      You can either add all relevant files to the nix-store like this:
-      nix-store --add-fixed sha256 1023856-vdiskmanager-linux.7.0.1.zip
+      You can add all relevant files to the nix-store like this:
+      nix-store --add-fixed sha256 VMware-vix-disklib-7.0.3-18705163.x86_64.tar.gz
     '';
   };
 
-  nativeBuildInputs = [ pkgs.unzip autoPatchelfHook ];
-
-  unpackPhase = ''
-    mkdir $out
-    unzip $src -d $out
-  '';
+  nativeBuildInputs = [ autoPatchelfHook ];
 
   installPhase = ''
     mkdir $out/bin
-    mv $out/1023856-vmware-vdiskmanager-linux.7.0.1 $out/bin/vmware-vdiskmanager
+    mv bin64/vmware-vdiskmanager $out/bin/
     chmod a+x $out/bin/vmware-vdiskmanager
   '';
 

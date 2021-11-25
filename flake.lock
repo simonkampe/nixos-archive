@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1634661806,
-        "narHash": "sha256-fBuR7EZ67UOdNt3gEwhoyWJ6zJtXh4kuupIALRcx/7I=",
+        "lastModified": 1636552551,
+        "narHash": "sha256-k7Hq/bvUnRlAfFjPGuw3FsSqqspQdRHsCHpgadw6UkQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8fe3b97ef4527ac88d03ea33e0789f3512e01adc",
+        "rev": "9e86f5f7a19db6da2445f07bafa6694b556f9c6d",
         "type": "github"
       },
       "original": {
@@ -19,16 +19,33 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
+        "simon": "simon",
         "unstable": "unstable"
+      }
+    },
+    "simon": {
+      "locked": {
+        "lastModified": 1636630182,
+        "narHash": "sha256-iRuGHHkCfURIkVmh0l0+rMPN+7fOLUWE4n085eRlWhI=",
+        "owner": "simonkampe",
+        "repo": "nixpkgs",
+        "rev": "82db2032b5b78c8d7a81d25c3d3ae90bd3dbacae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "simonkampe",
+        "ref": "vmware-host-modules",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "unstable": {
       "locked": {
-        "lastModified": 1634515797,
-        "narHash": "sha256-elgCUC2khtBkOSpE4gDymNvthTZAI4hGI2iNu3YEUkA=",
+        "lastModified": 1636267212,
+        "narHash": "sha256-KDS173KqmqrYUPY9N4vf750GxIo+S6E0djyq2BsQm8s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5f0194220f2402b06f7f79bba6351895facb5acb",
+        "rev": "c935f5e0add2cf0ae650d072c8357533e21b0c35",
         "type": "github"
       },
       "original": {
