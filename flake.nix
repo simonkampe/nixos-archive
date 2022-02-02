@@ -4,7 +4,7 @@
   nixConfig.extra-experimental-features = "nix-command flakes";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
@@ -33,18 +33,32 @@
       };
     };
 
-    nixosConfigurations.heimdall = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+    nixosConfigurations = {
+	    heimdall = nixpkgs.lib.nixosSystem {
+	      system = "x86_64-linux";
 
-      modules = [
-        hosts/heimdall.nix
-        hosts/heimdall/hardware-configuration.nix
-        common/locale.nix
-        hardware/tp1g3.nix
-        graphical/sway.nix
-      ];
+	      modules = [
+		hosts/heimdall.nix
+		hosts/heimdall/hardware-configuration.nix
+		common/locale.nix
+		hardware/tp1g3.nix
+		graphical/sway.nix
+	      ];
 
-      inherit pkgs;
+	      inherit pkgs;
+	    };
+	    mendelevium = nixpkgs.lib.nixosSystem {
+	      system = "x86_64-linux";
+
+	      modules = [
+		hosts/mendelevium.nix
+		hosts/mendelevium-hardware-configuration.nix
+		common/locale.nix
+		graphical/kde.nix
+	      ];
+
+	      inherit pkgs;
+	    };
     };
   };
 }
