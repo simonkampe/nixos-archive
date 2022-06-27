@@ -1,26 +1,26 @@
 { pkgs, ... }:
 
 {
-
   hardware = {
     pulseaudio = {
       enable = true;
       support32Bit = true;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
       package = pkgs.pulseaudioFull;
     };
 
     bluetooth = {
       enable = true;
-
-      # Enable A2DP
-      #General = {
-      #  Enable = "Source,Sink,Media,Socket";
-      #};
     };
+
   };
 
-  services = {
-    blueman.enable = true;
-  };
+  # Fix DPI
+  hardware.video.hidpi.enable = true;
+  #environment.variables = {
+  #  GDK_SCALE = "2";
+  #  GDK_DPI_SCALE = "0.5";
+  #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+  #};
+
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 }

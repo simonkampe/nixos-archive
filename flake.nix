@@ -4,13 +4,15 @@
   nixConfig.extra-experimental-features = "nix-command flakes";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs@{
     self,
     nixpkgs,
+    nixos-hardware,
     ...
   }:
   let
@@ -34,31 +36,55 @@
     };
 
     nixosConfigurations = {
-	    heimdall = nixpkgs.lib.nixosSystem {
-	      system = "x86_64-linux";
+      feynmann = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-	      modules = [
-		hosts/heimdall.nix
-		hosts/heimdall/hardware-configuration.nix
-		common/locale.nix
-		hardware/tp1g3.nix
-		graphical/sway.nix
-	      ];
+        modules = [
+          # Software
+          hosts/feynmann.nix
+          common/common.nix
+          common/locale.nix
+          roles/common_utils.nix
+          roles/dev.nix
+          roles/multimedia.nix
 
-	      inherit pkgs;
-	    };
-	    mendelevium = nixpkgs.lib.nixosSystem {
-	      system = "x86_64-linux";
+          # Hardware
+          hosts/feynmann/hardware-configuration.nix
+          hardware/tp1g3.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
+          nixos-hardware.nixosModules.common-gpu-nvidia
+          nixos-hardware.nixosModules.common-cpu-intel
+        ];
 
-	      modules = [
-		hosts/mendelevium.nix
-		hosts/mendelevium-hardware-configuration.nix
-		common/locale.nix
-		graphical/kde.nix
-	      ];
+        inherit pkgs;
+      };
 
-	      inherit pkgs;
-	    };
+      heimdall = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          hosts/heimdall.nix
+          hosts/heimdall/hardware-configuration.nix
+          common/locale.nix
+          hardware/tp1g3.nix
+          graphical/sway.nix
+        ];
+
+        inherit pkgs;
+      };
+
+      mendelevium = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          hosts/mendelevium.nix
+          hosts/mendelevium-hardware-configuration.nix
+          common/locale.nix
+          graphical/kde.nix
+        ];
+
+        inherit pkgs;
+      };
     };
   };
 }
