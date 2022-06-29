@@ -3,7 +3,9 @@
   environment.systemPackages = with pkgs; [
     mailspring
     libreoffice-qt
-    evolution-desktop
     teams
   ];
+
+  # Needed for mailspring
+  services.gnome.gnome-keyring.enable = true;
 }
