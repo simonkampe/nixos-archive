@@ -47,6 +47,7 @@
           roles/common_utils.nix
           roles/dev.nix
           roles/multimedia.nix
+          roles/office.nix
 
           # Hardware
           hosts/feynmann/hardware-configuration.nix
