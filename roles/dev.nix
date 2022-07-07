@@ -3,7 +3,6 @@
   environment.systemPackages = with pkgs; [
     # Tools
     gh # Github CLI
-    docker
     docker-compose
     nixos-generators
     influxdb
@@ -30,6 +29,7 @@
 
   # Virtualization
   virtualisation.vmware.host.enable = true;
+  virtualisation.docker.enable = true;
 
   # Add udev for MCC DAQ
   services.udev.extraRules = ''
