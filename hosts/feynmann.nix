@@ -53,6 +53,7 @@
     imagemagick
     wireshark
     glxinfo
+    starship
 
     # Web
     firefox
