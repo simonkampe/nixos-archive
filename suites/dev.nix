@@ -8,10 +8,19 @@
     influxdb
     direnv
     nix-direnv
+    pinentry-gtk2
 
     # IDE
     jetbrains.clion
   ];
+
+  # Enable gpg
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     pinentryFlavor = "gtk2";
+     enableSSHSupport = true;
+  };
 
   # nix options for derivations to persist garbage collection
   nix.extraOptions = ''

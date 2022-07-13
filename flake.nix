@@ -7,12 +7,17 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
     self,
     nixpkgs,
     nixos-hardware,
+    home-manager,
     ...
   }:
   let
@@ -40,14 +45,19 @@
         system = "x86_64-linux";
 
         modules = [
+          # DE/WM
+          #graphical/sway.nix
+          graphical/kde.nix
+
           # Software
           hosts/feynmann.nix
           common/common.nix
           common/locale.nix
-          roles/common_utils.nix
-          roles/dev.nix
-          roles/multimedia.nix
-          roles/office.nix
+          suites/common_utils.nix
+          suites/dev.nix
+          suites/multimedia.nix
+          suites/office.nix
+          suites/social.nix
 
           # Hardware
           hosts/feynmann/hardware-configuration.nix
@@ -55,20 +65,6 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
           nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-cpu-intel
-        ];
-
-        inherit pkgs;
-      };
-
-      heimdall = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-          hosts/heimdall.nix
-          hosts/heimdall/hardware-configuration.nix
-          common/locale.nix
-          hardware/tp1g3.nix
-          graphical/sway.nix
         ];
 
         inherit pkgs;
@@ -82,6 +78,16 @@
           hosts/mendelevium-hardware-configuration.nix
           common/locale.nix
           graphical/kde.nix
+        ];
+
+        inherit pkgs;
+      };
+    };
+
+    homeConfigurations = {
+      simon = home-manager.lib.homeManagerConfiguration {
+        modules = [
+          home/simon.nix
         ];
 
         inherit pkgs;
