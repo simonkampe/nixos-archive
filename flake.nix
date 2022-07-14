@@ -88,6 +88,7 @@
       simon = home-manager.lib.homeManagerConfiguration {
         modules = [
           home/simon.nix
+          home/common.nix
         ];
 
         inherit pkgs;
