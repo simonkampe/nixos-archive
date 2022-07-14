@@ -23,6 +23,16 @@
   home.packages = [
   ];
 
+  # Link stuff currently unsupported by home-manager
+  xdg = {
+    enable = true;
+    configFile."cargo" = {
+      source = config/cargo;
+      recursive = true;
+    };
+  };
+
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
