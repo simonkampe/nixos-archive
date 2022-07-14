@@ -19,31 +19,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable the X11 windowing system.
-  #services.xserver.enable = true;
-
-
-  # Enable the Plasma 5 Desktop Environment.
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-  
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
-
   programs.fish.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.simon = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
-    password = "changethis";
-    shell = pkgs.fish;
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

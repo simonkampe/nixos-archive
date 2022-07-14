@@ -49,6 +49,9 @@
           #graphical/sway.nix
           graphical/kde.nix
 
+          # Users
+          users/simon.nix
+
           # Software
           hosts/feynmann.nix
           common/common.nix
