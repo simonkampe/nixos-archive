@@ -200,6 +200,54 @@
     };
   };
 
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
+
+    extraPackages = with pkgs; [
+      fzf
+    ];
+
+    plugins = with pkgs.vimPlugins; [
+      vim-gitgutter
+      vim-fugitive
+      vim-nix
+      vim-nixhash
+      {
+        plugin = nvim-fzf;
+        config = ''
+          " Search files
+          nnoremap <C-P> :Files<CR>
+          inoremap <C-P> <ESC>:Files<CR>
+
+          " Search buffers
+          nnoremap <C-B> :Buffers<CR>
+          inoremap <C-B> <ESC>:Buffers<CR>
+
+          " Search git commits
+          nnoremap <C-C> :Commits<CR>
+          inoremap <C-C> <ESC>:Commits<CR>
+        '';
+      }
+      {
+        plugin = nord-vim;
+        config = "colorscheme nord";
+      }
+      {
+        plugin = lightline-vim;
+        config = ''
+          set noshowmode
+          let g:lightline = { 'colorscheme': 'nord' }
+        '';
+      }
+    ];
+  };
+
   services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;

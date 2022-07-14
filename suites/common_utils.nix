@@ -11,9 +11,5 @@
 
     # Editors
     helix
-    (unstable.neovim.override {
-      viAlias = true;
-      vimAlias = true;
-    })
   ];
 }
