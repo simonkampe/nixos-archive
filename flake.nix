@@ -4,12 +4,20 @@
   nixConfig.extra-experimental-features = "nix-command flakes";
 
   inputs = {
+    # System
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
@@ -90,8 +98,10 @@
     homeConfigurations = {
       simon = home-manager.lib.homeManagerConfiguration {
         modules = [
+          inputs.plasma-manager.homeManagerModules.plasma-manager
           home/simon.nix
           home/common.nix
+          home/kde.nix
         ];
 
         inherit pkgs;

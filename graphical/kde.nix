@@ -17,8 +17,5 @@
 
   environment.systemPackages = with pkgs; [
     nordic
-    tela-icon-theme
-    sddm-kcm
-    libsForQt5.bismuth
   ];
 }
