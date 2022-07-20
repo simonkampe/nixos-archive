@@ -70,6 +70,13 @@
         '';
       };
     };
+
+    shellAbbrs = {
+      clion = "clion . 1 > /dev/null 2&>1 &";
+    };
+
+    shellAliases = {
+    };
   };
 
   programs.starship = {
@@ -116,6 +123,7 @@
       find = "log --all --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --branches --name-status --grep";
       rah = "!git submodule foreach git clean -ffdq && git submodule foreach git reset --hard && git submodule update --recursive --init";
       amend = "commit --amend --date=now";
+      template = "!f() { git clone --depth=1 --branch=main git@github.com:simonkampe/template-\"$1\".git \"$2\"; rm -rf \"$2\"/.git; }; f";
     };
 
     # Include an identity file, for example:
@@ -129,6 +137,9 @@
     extraConfig = {
       core = {
         editor = "vim";
+      };
+      init = {
+        defaultBranch = "main";
       };
       log = {
         follow = "true";
@@ -234,6 +245,11 @@
         '';
       }
     ];
+
+    extraConfig = ''
+      set number relativenumber
+      set mouse=a
+    '';
   };
 
   services.gpg-agent = {

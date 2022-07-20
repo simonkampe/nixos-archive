@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    mailspring
+    kmail
     libreoffice-qt
     teams
+    zoom-us
+    obs-studio
   ];
 
   # Needed for mailspring

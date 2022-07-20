@@ -8,6 +8,7 @@
     curl
     htop
     git
+    unzip
 
     # Editors
     helix
