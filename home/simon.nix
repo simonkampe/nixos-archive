@@ -20,7 +20,7 @@
   programs.home-manager.enable = true;
 
   # Packages that should be installed to the user profile.
-  home.packages = [
+  home.packages = with pkgs; [
     picocom
   ];
 }
