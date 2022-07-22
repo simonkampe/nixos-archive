@@ -29,10 +29,12 @@
     files."kwinrc"."Windows"."RollOverDesktops" = false;
     files."kcminputrc"."Mouse"."cursorTheme" = "Qogir-dark";
     files."kdeglobals"."Icons"."Theme" = "Tela-dark";
+    files."kdeglobals"."KDE"."widgetStyle" = "Lightly";
   };
 
   home.packages = with pkgs; [
     tela-icon-theme
     qogir-icon-theme # Qogir cursors
+    libsForQt5.lightly
   ];
 }
