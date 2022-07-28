@@ -5,7 +5,7 @@
 
   inputs = {
     # System
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-2205.url = "github:NixOS/nixpkgs/nixos-22.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -24,29 +24,39 @@
   outputs = inputs@{
     self,
     nixpkgs,
+    unstable,
     nixos-hardware,
     home-manager,
     ...
   }:
   let
     inherit (builtins) attrValues;
-    pkgs = (import nixpkgs) {
+    pkgs = (import unstable) {
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
       };
-      overlays = attrValues self.overlays;
+      overlays = self.overlays;
     };
   in
   {
-    overlays = {
-      unstable = final: prev: {
+    overlays = [
+      (final: prev: {
         unstable = import inputs.unstable {
           system = final.system;
           config.allowUnfree = true;
         };
-      };
-    };
+      })
+      #(final: prev: {
+      #  jetbrains.jdk = prev.jetbrains.jdk;
+      #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
+      #    src = prev.fetchurl {
+      #      url = "https://download.jetbrains.com/cpp/CLion-2022.2.tar.gz";
+      #      sha256 = "sha256-lP+9+CYG8vkGGMH9uJQy1ifn8krhWLNqWR2iwwMEdDY=";
+      #    };
+      #  });
+      #})
+    ];
 
     nixosConfigurations = {
       feynmann = nixpkgs.lib.nixosSystem {
