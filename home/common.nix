@@ -221,16 +221,20 @@
         plugin = nvim-fzf;
         config = ''
           " Search files
-          nnoremap <C-P> :Files<CR>
-          inoremap <C-P> <ESC>:Files<CR>
+          nnoremap <C-p> :Files<CR>
+          inoremap <C-p> <ESC>:Files<CR>
 
           " Search buffers
-          nnoremap <C-B> :Buffers<CR>
-          inoremap <C-B> <ESC>:Buffers<CR>
+          nnoremap <C-b> :Buffers<CR>
+          inoremap <C-b> <ESC>:Buffers<CR>
+
+          " Search
+          nnoremap <C-f> :Ag<CR>
+          inoremap <C-f> <ESC>:Ag<CR>
 
           " Search git commits
-          nnoremap <C-C> :Commits<CR>
-          inoremap <C-C> <ESC>:Commits<CR>
+          nnoremap <C-c> :Commits<CR>
+          inoremap <C-c> <ESC>:Commits<CR>
         '';
       }
       {
