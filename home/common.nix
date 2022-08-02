@@ -82,6 +82,9 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    settings = {
+      command_timeout = 1000;
+    };
   };
 
   programs.direnv = {
@@ -197,63 +200,6 @@
         };
       };
     };
-  };
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    withNodeJs = true;
-    withPython3 = true;
-    withRuby = true;
-
-    extraPackages = with pkgs; [
-      fzf
-    ];
-
-    plugins = with pkgs.vimPlugins; [
-      vim-gitgutter
-      vim-fugitive
-      vim-nix
-      vim-nixhash
-      {
-        plugin = nvim-fzf;
-        config = ''
-          " Search files
-          nnoremap <C-p> :Files<CR>
-          inoremap <C-p> <ESC>:Files<CR>
-
-          " Search buffers
-          nnoremap <C-b> :Buffers<CR>
-          inoremap <C-b> <ESC>:Buffers<CR>
-
-          " Search
-          nnoremap <C-f> :Ag<CR>
-          inoremap <C-f> <ESC>:Ag<CR>
-
-          " Search git commits
-          nnoremap <C-c> :Commits<CR>
-          inoremap <C-c> <ESC>:Commits<CR>
-        '';
-      }
-      {
-        plugin = nord-vim;
-        config = "colorscheme nord";
-      }
-      {
-        plugin = lightline-vim;
-        config = ''
-          set noshowmode
-          let g:lightline = { 'colorscheme': 'nord' }
-        '';
-      }
-    ];
-
-    extraConfig = ''
-      set number relativenumber
-      set mouse=a
-    '';
   };
 
   services.gpg-agent = {

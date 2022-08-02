@@ -11,7 +11,7 @@
     pinentry-gtk2
 
     # IDE
-    jetbrains.clion
+    master.jetbrains.clion
   ];
 
   # Enable gpg

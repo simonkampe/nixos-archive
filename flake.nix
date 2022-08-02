@@ -7,6 +7,7 @@
     # System
     nixos-2205.url = "github:NixOS/nixpkgs/nixos-22.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home manager
@@ -25,6 +26,7 @@
     self,
     nixpkgs,
     unstable,
+    master,
     nixos-hardware,
     home-manager,
     ...
@@ -43,6 +45,12 @@
     overlays = [
       (final: prev: {
         unstable = import inputs.unstable {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
+      (final: prev: {
+        master = import inputs.master {
           system = final.system;
           config.allowUnfree = true;
         };
@@ -79,6 +87,7 @@
           suites/multimedia.nix
           suites/office.nix
           suites/social.nix
+          suites/making.nix
 
           # Hardware
           hosts/feynmann/hardware-configuration.nix
@@ -111,6 +120,7 @@
           inputs.plasma-manager.homeManagerModules.plasma-manager
           home/simon.nix
           home/common.nix
+          home/neovim.nix
           home/kde.nix
         ];
 
