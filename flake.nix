@@ -13,11 +13,11 @@
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
     plasma-manager = {
       url = "github:pjones/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
       inputs.home-manager.follows = "home-manager";
     };
   };
