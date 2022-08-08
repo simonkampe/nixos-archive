@@ -12,6 +12,7 @@
 
     # IDE
     master.jetbrains.clion
+    vscodium
     octaveFull
   ];
 
