@@ -35,7 +35,7 @@
   fileSystems."/data" =
     { device = "/dev/disk/by-label/Data";
       fsType = "auto";
-      options = [ "defaults" "user" "rw" "utf8" "auto" "umask=000" ];
+      options = [ "defaults" "user" "rw" "utf8" "auto" "uid=1000" "gid=1000" "umask=022" ];
     };
 
   swapDevices =
