@@ -19,6 +19,11 @@
       fish_add_path /home/simon/.cargo/bin
     '';
     functions = {
+      ducks = {
+        body = ''
+          sudo du -cks $argv | sort -rn | head
+        '';
+      };
       fish_greeting = {
         body = ''
           echo
@@ -76,6 +81,7 @@
     };
 
     shellAliases = {
+      flake = "nix flake";
     };
   };
 
