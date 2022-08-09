@@ -121,9 +121,13 @@
       " Make FZF respect .gitignore
       let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
+      " Fix dark colours in Nord theme
+      highlight Comment ctermfg=darkgray cterm=italic
+      highlight LineNr ctermfg=gray
+
       lua << EOF
-        vim.w.number = true
-        vim.w.relativenumber = true
+        vim.wo.number = true
+        vim.wo.relativenumber = true
 
         vim.o.mouse = "a"
       EOF
