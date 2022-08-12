@@ -21,6 +21,7 @@
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ibm-plex
     comfortaa
     noto-fonts
     material-design-icons
