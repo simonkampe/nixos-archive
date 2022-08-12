@@ -10,4 +10,8 @@
 
   # Needed for mailspring
   services.gnome.gnome-keyring.enable = true;
+
+  services = {
+    onedrive.enable = true;
+  };
 }
