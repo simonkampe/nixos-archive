@@ -104,10 +104,29 @@
         system = "x86_64-linux";
 
         modules = [
-          hosts/mendelevium.nix
-          hosts/mendelevium-hardware-configuration.nix
-          common/locale.nix
+	  # DE/WM
+          #graphical/sway.nix
           graphical/kde.nix
+
+          # Users
+          users/simon.nix
+
+          # Software
+          hosts/mendelevium.nix
+          common/common.nix
+          common/locale.nix
+          suites/common_utils.nix
+          suites/dev.nix
+          suites/multimedia.nix
+          suites/office.nix
+          suites/social.nix
+          suites/making.nix
+          suites/simra.nix
+          suites/gaming.nix
+
+          # Hardware
+          nixos-hardware.nixosModules.common-gpu-nvidia
+          nixos-hardware.nixosModules.common-cpu-intel
         ];
 
         inherit pkgs;
