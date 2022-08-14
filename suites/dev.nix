@@ -15,6 +15,9 @@
     master.jetbrains.clion
     vscodium
     octaveFull
+
+    # Other
+    libsForQt5.umbrello
   ];
 
   # Enable gpg
