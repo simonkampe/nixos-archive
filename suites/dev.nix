@@ -9,6 +9,7 @@
     direnv
     nix-direnv
     pinentry-gtk2
+    wireshark
 
     # IDE
     master.jetbrains.clion

@@ -88,6 +88,7 @@
           suites/office.nix
           suites/social.nix
           suites/making.nix
+          suites/linetic.nix
 
           # Hardware
           hosts/feynmann/hardware-configuration.nix

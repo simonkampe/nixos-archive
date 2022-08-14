@@ -17,5 +17,8 @@
 
   environment.systemPackages = with pkgs; [
     nordic
+    libsForQt5.kio-gdrive
+    libsForQt5.kaccounts-providers
+    libsForQt5.kaccounts-integration
   ];
 }

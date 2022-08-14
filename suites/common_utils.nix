@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # Utilities
     silver-searcher
     killall
     parted
@@ -9,8 +10,7 @@
     htop
     git
     unzip
-
-    # Editors
-    helix
+    imagemagick
+    glxinfo
   ];
 }

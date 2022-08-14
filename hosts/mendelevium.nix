@@ -32,13 +32,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Utils
-    imagemagick
-    wireshark
-    glxinfo
-
-    # Web
-    firefox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
