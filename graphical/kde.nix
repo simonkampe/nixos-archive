@@ -20,5 +20,7 @@
     libsForQt5.kio-gdrive
     libsForQt5.kaccounts-providers
     libsForQt5.kaccounts-integration
+    libsForQt5.filelight
+    partition-manager
   ];
 }
