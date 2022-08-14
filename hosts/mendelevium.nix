@@ -53,8 +53,11 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Disable offloading since NVidia is the only GPU
-  hardware.nvidia.prime.offload.enable = false;
+  hardware.nvidia = {
+    # Disable offloading since NVidia is the only GPU
+    prime.offload.enable = false;
+    powerManagement.enable = true;
+  };
   hardware.opengl.driSupport32Bit = true;
 
   # rtkit is optional but recommended
