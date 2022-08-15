@@ -91,7 +91,6 @@
           suites/linetic.nix
 
           # Hardware
-          hosts/feynmann/hardware-configuration.nix
           hardware/tp1g3.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
           nixos-hardware.nixosModules.common-gpu-nvidia
