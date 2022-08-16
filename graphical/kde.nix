@@ -21,6 +21,7 @@
     libsForQt5.kaccounts-providers
     libsForQt5.kaccounts-integration
     libsForQt5.filelight
+    libsForQt5.ark
     partition-manager
   ];
 }
