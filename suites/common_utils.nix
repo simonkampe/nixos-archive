@@ -12,5 +12,6 @@
     unzip
     imagemagick
     glxinfo
+    p7zip
   ];
 }
