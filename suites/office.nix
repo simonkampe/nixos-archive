@@ -9,5 +9,10 @@
 
   services = {
     onedrive.enable = true;
+
+    printing = {
+      enable = true;
+      drivers = [ pkgs.canon-cups-ufr2 ];
+    };
   };
 }

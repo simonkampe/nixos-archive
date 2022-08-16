@@ -18,7 +18,7 @@
 
   services = {
     avahi.enable = true;
-    printing.enable = true;
+    avahi.nssmdns = true;
   };
 }
 
