@@ -131,6 +131,30 @@
 
         inherit pkgs;
       };
+
+      marie = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+	  # DE/WM
+          #graphical/sway.nix
+          graphical/kde.nix
+
+          # Users
+          users/simon.nix
+
+          # Software
+          hosts/marie.nix
+          common/common.nix
+          common/locale.nix
+          suites/common_utils.nix
+
+          # Hardware
+          nixos-hardware.nixosModules.common-cpu-intel
+        ];
+
+        inherit pkgs;
+      };
     };
 
     homeConfigurations = {
