@@ -40,8 +40,10 @@
         '';
       }
       {
-        plugin = nord-vim;
-        config = "colorscheme nord";
+        plugin = nord-nvim;
+        config = ''
+          colorscheme nord
+        '';
       }
       {
         plugin = lightline-vim;
