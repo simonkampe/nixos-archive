@@ -10,6 +10,10 @@
     };
   };
 
+  # Extra utilities
+  home.packages = with pkgs; [
+    xcp
+  ];
 
   programs.fish = {
     enable = true;
@@ -82,6 +86,7 @@
 
     shellAliases = {
       flake = "nix flake";
+      cp = "xcp";
     };
   };
 
