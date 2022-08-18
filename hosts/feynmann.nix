@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, inputs, ... }:
 
 {
   # This value determines the NixOS release from which the default
@@ -27,7 +27,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  programs.fish.enable = true;
+  #programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -69,7 +69,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
-    [ v4l2loopback.out ];
+    [ v4l2loopback.out inputs.ethercat.packages.x86_64-linux.ethercat ];
 
   boot.extraModprobeConfig = ''
     # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming

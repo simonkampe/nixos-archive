@@ -9,6 +9,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    ethercat.url = "git+ssh://git@github.com/LineticAB/ethercat";
 
     # Home manager
     home-manager = {
@@ -69,6 +70,8 @@
     nixosConfigurations = {
       feynmann = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        specialArgs.inputs = inputs;
 
         modules = [
           # DE/WM
