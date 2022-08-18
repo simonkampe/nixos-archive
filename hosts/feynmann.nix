@@ -30,6 +30,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    inputs.ethercat.packages.x86_64-linux.ethercat
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
