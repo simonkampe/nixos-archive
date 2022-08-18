@@ -13,5 +13,7 @@
     imagemagick
     glxinfo
     p7zip
+    pciutils
+    usbutils
   ];
 }
