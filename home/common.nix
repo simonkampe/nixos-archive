@@ -78,6 +78,16 @@
           set_color normal
         '';
       };
+      dhcp = {
+        body = ''
+          if not set -q argv[1] or not set -q argv[2]
+            echo "Usage: dhcp <configuration directory> <interface>" 
+            exit 1
+          end
+
+          docker run -it --rm --name dhcpd --init --net host -v $argv[1]:/data networkboot/dhcpd $argv[2]
+        '';
+      };
     };
 
     shellAbbrs = {
@@ -87,6 +97,7 @@
     shellAliases = {
       flake = "nix flake";
       cp = "xcp";
+      dd = "dd status=progress";
     };
   };
 
