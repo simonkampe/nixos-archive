@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    kmail
+    thunderbird
     teams
     globalprotect-openconnect
   ];
