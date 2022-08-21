@@ -5,11 +5,14 @@
 
   inputs = {
     # System
-    nixos-2205.url = "github:NixOS/nixpkgs/nixos-22.05";
+    stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    ethercat.url = "git+ssh://git@github.com/LineticAB/ethercat";
+    ethercat = {
+      url = "git+ssh://git@github.com/LineticAB/ethercat";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
     # Home manager
     home-manager = {
@@ -44,6 +47,12 @@
   in
   {
     overlays = [
+      (final: prev: {
+        stable = import inputs.stable {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
       (final: prev: {
         unstable = import inputs.unstable {
           system = final.system;

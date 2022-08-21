@@ -57,6 +57,11 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
+  services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
+  hardware.nvidia = {
+    powerManagement.enable = true;
+  };
+  hardware.opengl.driSupport32Bit = true;
 
   ## Hardware configuration
   imports =
@@ -67,6 +72,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out inputs.ethercat.packages.x86_64-linux.ethercat ];
 

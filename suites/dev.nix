@@ -18,6 +18,7 @@
 
     # Other
     libsForQt5.umbrello
+    beekeeper-studio
   ];
 
   # Enable gpg
