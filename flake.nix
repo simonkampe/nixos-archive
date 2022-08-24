@@ -9,6 +9,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    simon.url = "github:simonkampe/nixpkgs/master";
     ethercat = {
       url = "git+ssh://git@github.com/LineticAB/ethercat";
       inputs.nixpkgs.follows = "unstable";
@@ -65,6 +66,12 @@
           config.allowUnfree = true;
         };
       })
+      (final: prev: {
+        simon = import inputs.simon {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
       #(final: prev: {
       #  jetbrains.jdk = prev.jetbrains.jdk;
       #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
@@ -83,6 +90,10 @@
         specialArgs.inputs = inputs;
 
         modules = [
+          # Host
+          hosts/feynmann.nix
+          hosts/feynmann-secrets.nix
+
           # DE/WM
           #graphical/sway.nix
           graphical/kde.nix
@@ -91,7 +102,6 @@
           users/simon.nix
 
           # Software
-          hosts/feynmann.nix
           common/common.nix
           common/locale.nix
           suites/common_utils.nix
@@ -116,6 +126,9 @@
         system = "x86_64-linux";
 
         modules = [
+          # Host
+          hosts/mendelevium.nix
+
 	  # DE/WM
           #graphical/sway.nix
           graphical/kde.nix
@@ -124,7 +137,6 @@
           users/simon.nix
 
           # Software
-          hosts/mendelevium.nix
           common/common.nix
           common/locale.nix
           suites/common_utils.nix

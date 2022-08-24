@@ -5,10 +5,12 @@
     zoom-us
     obs-studio
     firefox
+    cifs-utils
   ];
 
   services = {
     onedrive.enable = true;
+    teamviewer.enable = true;
 
     printing = {
       enable = true;

@@ -15,5 +15,12 @@
     p7zip
     pciutils
     usbutils
+
+    # Keyboard
+    uhk-agent
+  ];
+
+  services.udev.packages = with pkgs; [
+    uhk-udev-rules
   ];
 }

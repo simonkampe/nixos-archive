@@ -30,7 +30,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    inputs.ethercat.packages.x86_64-linux.ethercat
+    #inputs.ethercat.packages.x86_64-linux.ethercat
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -75,7 +75,8 @@
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   #boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
-    [ v4l2loopback.out inputs.ethercat.packages.x86_64-linux.ethercat ];
+    [ v4l2loopback.out ];
+    #[ v4l2loopback.out inputs.ethercat.packages.x86_64-linux.ethercat ];
 
   boot.extraModprobeConfig = ''
     # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming

@@ -13,6 +13,7 @@
   # Extra utilities
   home.packages = with pkgs; [
     xcp
+    git-crypt
   ];
 
   programs.fish = {
@@ -21,6 +22,14 @@
       set -gx EDITOR vim
       set -gx VISUAL vim
       fish_add_path /home/simon/.cargo/bin
+
+
+      set -gx ATUIN_NOBIND "true"
+      atuin init fish | source
+
+      # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+      bind \cr _atuin_search
+      bind -M insert \cr _atuin_search
     '';
     functions = {
       ducks = {
@@ -103,7 +112,7 @@
 
   programs.atuin = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false; # This is added in fish config instead
   };
 
   programs.starship = {
