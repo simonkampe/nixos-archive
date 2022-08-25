@@ -18,6 +18,7 @@
 
     # Keyboard
     uhk-agent
+    wally-cli
   ];
 
   services.udev.packages = with pkgs; [
