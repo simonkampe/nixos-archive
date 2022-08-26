@@ -12,6 +12,8 @@
 
     extraPackages = with pkgs; [
       fzf
+      silver-searcher
+      ripgrep
     ];
 
     plugins = with pkgs.vimPlugins; [
