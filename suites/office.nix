@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    libreoffice-qt
+    wpsoffice
     zoom-us
     obs-studio
     firefox
