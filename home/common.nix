@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     xcp
     git-crypt
+    any-nix-shell
   ];
 
   programs.fish = {
@@ -30,6 +31,8 @@
       # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
       bind \cr _atuin_search
       bind -M insert \cr _atuin_search
+
+      any-nix-shell fish --info-right | source
     '';
     functions = {
       ducks = {
