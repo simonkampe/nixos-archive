@@ -15,6 +15,7 @@
     p7zip
     pciutils
     usbutils
+    unrar
 
     # Keyboard
     uhk-agent
