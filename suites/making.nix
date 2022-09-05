@@ -4,5 +4,6 @@
     snapmaker-luban
     freecad
     gimp
+    inkscape
   ];
 }
