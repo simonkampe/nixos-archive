@@ -100,6 +100,13 @@
           docker run -it --rm --name dhcpd --init --net host -v $argv[1]:/data networkboot/dhcpd $argv[2]
         '';
       };
+      wally = {
+        body = ''
+          set tmpfile (mktemp).bin
+          wget https://oryx.zsa.io/BP4GQ/latest/binary -O $tmpfile
+          sudo wally-cli $tmpfile
+        '';
+      };
     };
 
     shellAbbrs = {
