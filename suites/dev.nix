@@ -12,7 +12,7 @@
     wireshark
 
     # IDE
-    master.jetbrains.clion
+    jetbrains.clion
     vscodium
     octaveFull
 

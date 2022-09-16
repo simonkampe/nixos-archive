@@ -5,11 +5,12 @@
 
   inputs = {
     # System
+    nixpkgs.follows = "unstable";
     stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
+    fork.url = "github:simonkampe/nixpkgs/ethercat";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    simon.url = "github:simonkampe/nixpkgs/master";
     #ethercat = {
     #  url = "git+ssh://git@github.com/LineticAB/ethercat";
     #  inputs.nixpkgs.follows = "unstable";
@@ -18,11 +19,11 @@
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     plasma-manager = {
       url = "github:pjones/plasma-manager";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };
@@ -30,15 +31,13 @@
   outputs = inputs@{
     self,
     nixpkgs,
-    unstable,
-    master,
     nixos-hardware,
     home-manager,
     ...
   }:
   let
     inherit (builtins) attrValues;
-    pkgs = (import unstable) {
+    pkgs = (import inputs.unstable) {
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
@@ -67,11 +66,17 @@
         };
       })
       (final: prev: {
-        simon = import inputs.simon {
+        fork = import inputs.fork {
           system = final.system;
           config.allowUnfree = true;
         };
       })
+      #(final: prev: {
+      #  simon = import inputs.simon {
+      #    system = final.system;
+      #    config.allowUnfree = true;
+      #  };
+      #})
       #(final: prev: {
       #  jetbrains.jdk = prev.jetbrains.jdk;
       #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {

@@ -30,6 +30,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    fork.igh-ethercat-tools
     #inputs.ethercat.packages.x86_64-linux.ethercat
   ];
 
@@ -93,14 +94,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  #boot.kernelPackages = pkgs.linuxPackages_zen;
+  #boot.kernelPackages = pkgs.fork.linuxPackages;
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   #boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
-    #[ v4l2loopback.out inputs.ethercat.packages.x86_64-linux.ethercat ];
 
   boot.extraModprobeConfig = ''
     # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
