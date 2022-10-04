@@ -11,10 +11,6 @@
     master.url = "github:NixOS/nixpkgs/master";
     fork.url = "github:simonkampe/nixpkgs/ethercat";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    #ethercat = {
-    #  url = "git+ssh://git@github.com/LineticAB/ethercat";
-    #  inputs.nixpkgs.follows = "unstable";
-    #};
 
     # Home manager
     home-manager = {

@@ -30,8 +30,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    fork.igh-ethercat-tools
-    #inputs.ethercat.packages.x86_64-linux.ethercat
   ];
 
   services = {
