@@ -10,6 +10,7 @@
     nix-direnv
     pinentry-gtk2
     wireshark
+    nmap
 
     # IDE
     jetbrains.clion
