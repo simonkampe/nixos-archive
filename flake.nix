@@ -9,7 +9,6 @@
     stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
-    fork.url = "github:simonkampe/nixpkgs/ethercat";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home manager
@@ -67,12 +66,6 @@
           config.allowUnfree = true;
         };
       })
-      #(final: prev: {
-      #  simon = import inputs.simon {
-      #    system = final.system;
-      #    config.allowUnfree = true;
-      #  };
-      #})
       #(final: prev: {
       #  jetbrains.jdk = prev.jetbrains.jdk;
       #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {

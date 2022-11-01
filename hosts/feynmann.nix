@@ -29,9 +29,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  ];
-
   services = {
     # Disable this to enable tlp
     power-profiles-daemon.enable = false;
@@ -79,13 +76,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
-
-  # NOTE: DisplayLink does not play well with nvidia.
-  #services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
-  #hardware.nvidia = {
-  #  powerManagement.enable = true;
-  #};
-  #hardware.opengl.driSupport32Bit = true;
 
   ## Hardware configuration
   imports =
