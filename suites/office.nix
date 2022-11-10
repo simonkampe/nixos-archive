@@ -6,6 +6,7 @@
     obs-studio
     firefox
     cifs-utils
+    samba
   ];
 
   services = {

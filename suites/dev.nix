@@ -11,6 +11,7 @@
     pinentry-gtk2
     wireshark
     nmap
+    inetutils
 
     # IDE
     jetbrains.clion
