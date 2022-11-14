@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    calligra
+    wpsoffice
     zoom-us
     obs-studio
     firefox
