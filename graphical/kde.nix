@@ -26,5 +26,5 @@
     libsForQt5.kate
   ];
 
-  programs.partition-manager.enable
+  programs.partition-manager.enable = true;
 }
