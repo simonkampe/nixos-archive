@@ -24,6 +24,7 @@
     libsForQt5.ark
     libsForQt5.kalk
     libsForQt5.kate
-    partition-manager
   ];
+
+  programs.partition-manager.enable
 }
