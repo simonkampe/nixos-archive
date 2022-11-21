@@ -2,25 +2,9 @@
 {
   environment.systemPackages = with pkgs; [
     # Tools
-    gh # Github CLI
-    docker-compose
     nixos-generators
-    influxdb
-    direnv
-    nix-direnv
     pinentry-gtk2
-    wireshark
-    nmap
-    inetutils
-
-    # IDE
-    jetbrains.clion
-    vscodium
-    octaveFull
-
-    # Other
-    libsForQt5.umbrello
-    beekeeper-studio
+    docker-compose
   ];
 
   # Enable gpg
@@ -38,11 +22,6 @@
   '';
   environment.pathsToLink = [
     "/share/nix-direnv"
-  ];
-
-  # Support flakes in nix-direnv
-  nixpkgs.overlays = [
-    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
   ];
 
   # Virtualization

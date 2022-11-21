@@ -180,6 +180,7 @@
         modules = [
           inputs.plasma-manager.homeManagerModules.plasma-manager
           home/simon.nix
+          home/devtools.nix
           home/common.nix
           home/neovim.nix
           home/kde.nix
