@@ -11,7 +11,6 @@
     inetutils
     jetbrains.clion
     octaveFull
-    mysql-workbench
   ];
 
   programs.direnv = {
