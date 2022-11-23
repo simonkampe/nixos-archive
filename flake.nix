@@ -36,6 +36,12 @@
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
+
+        # Temporarily allowed unsecure packages
+        permittedInsecurePackages = [
+          "qtwebkit-5.212.0-alpha4"
+        ];
+
       };
       overlays = self.overlays;
     };
