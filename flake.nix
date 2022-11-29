@@ -39,7 +39,7 @@
 
         # Temporarily allowed unsecure packages
         permittedInsecurePackages = [
-          "qtwebkit-5.212.0-alpha4"
+          #"qtwebkit-5.212.0-alpha4"
         ];
 
       };
