@@ -189,6 +189,7 @@
           home/devtools.nix
           home/common.nix
           home/neovim.nix
+          home/helix.nix
           home/kde.nix
         ];
 
