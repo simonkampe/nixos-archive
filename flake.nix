@@ -5,8 +5,8 @@
 
   inputs = {
     # System
-    nixpkgs.follows = "unstable";
-    stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.follows = "stable";
+    stable.url = "github:NixOS/nixpkgs/nixos-22.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -32,7 +32,7 @@
   }:
   let
     inherit (builtins) attrValues;
-    pkgs = (import inputs.unstable) {
+    pkgs = (import inputs.nixpkgs) {
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
@@ -87,7 +87,11 @@
       feynmann = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        specialArgs.inputs = inputs;
+        pkgs = (import inputs.stable) {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = self.overlays;
+        };
 
         modules = [
           # Host
@@ -118,12 +122,16 @@
           nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-cpu-intel
         ];
-
-        inherit pkgs;
       };
 
       mendelevium = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        pkgs = (import inputs.stable) {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = self.overlays;
+        };
 
         modules = [
           # Host
@@ -152,8 +160,6 @@
           nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-cpu-intel
         ];
-
-        inherit pkgs;
       };
 
       marie = nixpkgs.lib.nixosSystem {
@@ -182,6 +188,12 @@
     };
 
     homeConfigurations = {
+      pkgs = (import inputs.unstable) {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        overlays = self.overlays;
+      };
+
       simon = home-manager.lib.homeManagerConfiguration {
         modules = [
           inputs.plasma-manager.homeManagerModules.plasma-manager
@@ -192,8 +204,6 @@
           home/helix.nix
           home/kde.nix
         ];
-
-        inherit pkgs;
       };
     };
   };
