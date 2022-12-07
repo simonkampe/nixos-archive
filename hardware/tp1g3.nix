@@ -1,5 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
+in
 {
   hardware = {
     bluetooth = {
@@ -33,5 +42,17 @@
   #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   #};
 
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+  services.xserver.videoDrivers = [ "displaylink" "nvidia" ];
+
+  hardware.nvidia.prime = {
+    offload.enable = true;
+  };
+
+  specialisation = {
+    external-display.configuration = {
+      system.nixos.tags = [ "external-display" ];
+      hardware.nvidia.prime.offload.enable = lib.mkForce false;
+      hardware.nvidia.powerManagement.enable = lib.mkForce false;
+    };
+  };
 }

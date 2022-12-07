@@ -119,8 +119,6 @@
           # Hardware
           hardware/tp1g3.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
-          nixos-hardware.nixosModules.common-gpu-nvidia
-          nixos-hardware.nixosModules.common-cpu-intel
         ];
       };
 
