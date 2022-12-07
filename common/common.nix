@@ -22,7 +22,7 @@
       enable = true;
       nssmdns = true;
       publish = {
-        enable = true;
+        enable = false;
         addresses = true;
         domain = true;
         hinfo = true;

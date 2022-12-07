@@ -13,12 +13,6 @@
     onedrive.enable = true;
     teamviewer.enable = true;
 
-    # Need avahi for printers
-    avahi = {
-      enable = true;
-      nssmdns = true;
-    };
-
     printing = {
       enable = true;
       drivers = [ pkgs.canon-cups-ufr2 ];
