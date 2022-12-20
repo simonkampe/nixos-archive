@@ -20,6 +20,9 @@
     # Keyboard
     uhk-agent
     wally-cli
+
+    # Browser
+    firefox-wayland
   ];
 
   services.udev.packages = with pkgs; [

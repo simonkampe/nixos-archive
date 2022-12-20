@@ -4,9 +4,9 @@
     wpsoffice
     zoom-us
     obs-studio
-    firefox
     cifs-utils
     samba
+    remmina # RDP client
   ];
 
   services = {

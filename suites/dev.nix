@@ -25,7 +25,11 @@
   ];
 
   # Virtualization
-  virtualisation.vmware.host.enable = true;
+  virtualisation.vmware.host = {
+    enable = true;
+    package = pkgs.unstable.vmware-workstation;
+  };
+
   virtualisation.docker.enable = true;
 
   # Add udev for MCC DAQ

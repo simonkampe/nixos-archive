@@ -82,7 +82,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  #boot.kernelPackages = pkgs.fork.linuxPackages;
+  boot.kernelPackages = pkgs.unstable.linuxPackages;
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "uas" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];

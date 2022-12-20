@@ -42,17 +42,17 @@ in
   #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   #};
 
-  services.xserver.videoDrivers = [ "displaylink" "nvidia" ];
+  services.xserver.videoDrivers = [ "displaylink" ];
 
   hardware.nvidia.prime = {
-    offload.enable = true;
+    offload.enable = false;
   };
 
-  specialisation = {
-    external-display.configuration = {
-      system.nixos.tags = [ "external-display" ];
-      hardware.nvidia.prime.offload.enable = lib.mkForce false;
-      hardware.nvidia.powerManagement.enable = lib.mkForce false;
-    };
-  };
+  #specialisation = {
+  #  external-display.configuration = {
+  #    system.nixos.tags = [ "external-display" ];
+  #    hardware.nvidia.prime.offload.enable = lib.mkForce false;
+  #    hardware.nvidia.powerManagement.enable = lib.mkForce false;
+  #  };
+  #};
 }

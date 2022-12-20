@@ -73,6 +73,11 @@
         };
       })
       #(final: prev: {
+      #  vmware-modules = prev.vmware-modules.overrideAttrs(_: {
+      #  
+      #  });
+      #})
+      #(final: prev: {
       #  jetbrains.jdk = prev.jetbrains.jdk;
       #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
       #    src = prev.fetchurl {
@@ -89,7 +94,10 @@
 
         pkgs = (import inputs.stable) {
           system = "x86_64-linux";
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            #allowBroken = true;
+          };
           overlays = self.overlays;
         };
 
@@ -186,13 +194,13 @@
     };
 
     homeConfigurations = {
-      pkgs = (import inputs.unstable) {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-        overlays = self.overlays;
-      };
-
       simon = home-manager.lib.homeManagerConfiguration {
+        pkgs = (import inputs.unstable) {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = self.overlays;
+        };
+
         modules = [
           inputs.plasma-manager.homeManagerModules.plasma-manager
           home/simon.nix
