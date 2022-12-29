@@ -37,6 +37,6 @@
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="09db", ATTRS{idProduct}=="*", GROUP="users", MODE="0660"
   '';
 
-  # Need this to build for Raspberry Pi aarch64
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # Emulate buildsystems
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "x86_64-windows" ];
 }

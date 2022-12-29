@@ -11,6 +11,7 @@
     inetutils
     jetbrains.clion
     octaveFull
+    unstable.sniffnet
   ];
 
   programs.direnv = {
