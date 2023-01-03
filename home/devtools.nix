@@ -10,8 +10,12 @@
     nmap
     inetutils
     jetbrains.clion
+    jetbrains.pycharm-community
+    jetbrains.idea-community
     octaveFull
     unstable.sniffnet
+    screen
+    arduino
   ];
 
   programs.direnv = {

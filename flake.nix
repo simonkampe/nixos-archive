@@ -77,15 +77,38 @@
       #  
       #  });
       #})
-      #(final: prev: {
-      #  jetbrains.jdk = prev.jetbrains.jdk;
-      #  jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
-      #    src = prev.fetchurl {
-      #      url = "https://download.jetbrains.com/cpp/CLion-2022.2.tar.gz";
-      #      sha256 = "sha256-lP+9+CYG8vkGGMH9uJQy1ifn8krhWLNqWR2iwwMEdDY=";
-      #    };
-      #  });
-      #})
+      (final: prev: {
+        jetbrains.jdk = prev.jetbrains.jdk.overrideAttrs (_: rec {
+          version = "17.0.5-b653.23";
+          src = prev.fetchFromGitHub {
+            owner = "JetBrains";
+            repo = "JetBrainsRuntime";
+            rev = "jb${version}";
+            hash = "sha256-7Nx7Y12oMfs4zeQMSfnUaDCW1xJYMEkcoTapSpmVCfU=";
+          };
+        });
+        jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
+          version = "2022.3.1";
+          src = prev.fetchurl {
+            url = "https://download.jetbrains.com/cpp/CLion-2022.3.1.tar.gz";
+            sha256 = "cd057a0aa96cf5b4216a436136a1002e6f3dc578bcd8a69f98d6908381b03526";
+          };
+        });
+        jetbrains.idea-community = prev.jetbrains.idea-community.overrideAttrs (_: rec {
+          version = "2022.3.1";
+          src = prev.fetchurl {
+            url = "https://download.jetbrains.com/idea/ideaIC-2022.3.1.tar.gz";
+            sha256 = "4c3514642ce6c86e5343cc29b01c06ddc9c55f134bcb6650de5d7d36205799e8";
+          };
+        });
+        jetbrains.pycharm-community = prev.jetbrains.pycharm-community.overrideAttrs (_: rec {
+          version = "2022.3.1";
+          src = prev.fetchurl {
+            url = "https://download.jetbrains.com/python/pycharm-community-2022.3.1.tar.gz";
+            sha256 = "b243103f27cfb763106a2f5667d8f201562154755ce9746e81e88c80acd7b316";
+          };
+        });
+      })
     ];
 
     nixosConfigurations = {

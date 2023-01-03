@@ -112,6 +112,8 @@
 
     shellAbbrs = {
       clion = "clion . 1>/dev/null 2>&1 &";
+      idea = "idea-community . 1>/dev/null 2>&1 &";
+      pycharm = "pycharm-community . 1>/dev/null 2>&1 &";
     };
 
     shellAliases = {
