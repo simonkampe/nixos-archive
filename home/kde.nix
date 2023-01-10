@@ -33,6 +33,8 @@
   };
 
   home.packages = with pkgs; [
+    libsForQt5.ksshaskpass
+
     tela-icon-theme
     qogir-icon-theme # Qogir cursors
     libsForQt5.lightly

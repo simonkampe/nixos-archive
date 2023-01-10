@@ -33,6 +33,13 @@
       bind \cr _atuin_search
       bind -M insert \cr _atuin_search
 
+      # Use ksshaskpass
+      if command -s ksshaskpass > /dev/null
+        set -gx SSH_ASKPASS $(command -s ksshaskpass)
+      end
+
+      set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+
       any-nix-shell fish --info-right | source
     '';
     functions = {
