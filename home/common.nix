@@ -23,6 +23,8 @@
     interactiveShellInit = ''
       set -gx EDITOR vim
       set -gx VISUAL vim
+      set -gx NIX_SHELL_PRESERVE_PROMPT 1
+
       fish_add_path /home/simon/.cargo/bin
 
 
