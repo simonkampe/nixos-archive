@@ -9,12 +9,13 @@
 
   hardware.enableAllFirmware = true;
 
-  #nix = {
-  #  package = pkgs.nixFlakes;
-  #  extraOptions = ''
-  #    experimental-features = nix-command flakes";
-  #  '';
-  #};
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+  };
 
   services = {
     resolved.enable = true;
