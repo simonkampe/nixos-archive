@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     thunderbird
-    teams
+    master.teams
     globalprotect-openconnect
   ];
 
