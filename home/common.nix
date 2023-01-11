@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     xcp
     any-nix-shell
+    brave
   ];
 
   programs.nushell.enable = true;
