@@ -121,7 +121,21 @@
             allowUnfree = true;
             #allowBroken = true;
           };
-          overlays = self.overlays;
+          overlays = self.overlays ++ [
+            (final: prev: rec {
+              linuxPackages_latest = prev.linuxPackages_latest // {
+                evdi = prev.linuxPackages_latest.evdi.overrideAttrs (final: prev: {
+                  version = "1.12.0-git";
+                  src = prev.fetchFromGitHub {
+                    rev = "bdc258b25df4d00f222fde0e3c5003bf88ef17b5";
+                    sha256 = "sha256-7Nx7Y12oMfs4zeQMSfnUaDCW1xJYMEkcoTapSpmVCfU=";
+                  };
+                });
+              };
+
+              displaylink = prev.displaylink.override { inherit (linuxPackages_latest) evdi; };
+            })
+          ];
         };
 
         modules = [
