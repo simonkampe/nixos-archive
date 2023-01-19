@@ -42,7 +42,7 @@ in
   #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   #};
 
-  services.xserver.videoDrivers = [ "displaylink" ];
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
   hardware.nvidia.prime = {
     offload.enable = false;
