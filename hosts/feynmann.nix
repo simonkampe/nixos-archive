@@ -88,7 +88,7 @@
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   #boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
-    [ v4l2loopback.out evdi ];
+    [ v4l2loopback.out ];
 
   boot.extraModprobeConfig = ''
     # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming

@@ -122,18 +122,20 @@
             #allowBroken = true;
           };
           overlays = self.overlays ++ [
-            (final: prev: rec {
-              linuxPackages_latest = prev.linuxPackages_latest // {
-                evdi = prev.linuxPackages_latest.evdi.overrideAttrs (final: prev: {
+            (final: prev: {
+              linuxPackages_latest = prev.linuxPackages_latest.extend (linux_final: linux_prev: {
+                evdi = linux_prev.evdi.overrideAttrs (evdi_final: evdi_prev: {
                   version = "1.12.0-git";
                   src = prev.fetchFromGitHub {
+                    owner = "DisplayLink";
+                    repo = "evdi";
                     rev = "bdc258b25df4d00f222fde0e3c5003bf88ef17b5";
                     sha256 = "sha256-7Nx7Y12oMfs4zeQMSfnUaDCW1xJYMEkcoTapSpmVCfU=";
                   };
                 });
-              };
+              });
 
-              displaylink = prev.displaylink.override { inherit (linuxPackages_latest) evdi; };
+              displaylink = prev.displaylink.override { inherit (final.linuxPackages_latest) evdi; };
             })
           ];
         };
