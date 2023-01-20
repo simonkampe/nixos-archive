@@ -1,6 +1,17 @@
 { config, pkgs, ... }:
+let
+  mind-nvim = pkgs.vimUtils.buildVimPlugin rec {
+    pname = "mind-nvim";
+    version = "2.2.1";
 
-{
+    src = pkgs.fetchFromGitHub {
+      owner = "phaazon";
+      repo = "mind.nvim";
+      rev = "v${version}";
+      sha256 = "sha256-y64F9v7Ggzagmz2p2EYTdtKDuGyA19xYXqW92S0tRj0=";
+    };
+  };
+in {
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -21,6 +32,19 @@
       vim-fugitive
       vim-nix
       vim-nixhash
+      plenary-nvim
+      {
+        plugin = mind-nvim;
+        config = ''
+          lua << EOF
+            vim.g.mapleader = " "
+            require'mind'.setup()
+            vim.keymap.set('n', '<leader>mom', ':MindOpenMain<cr>')
+            vim.keymap.set('n', '<leader>mop', ':MindOpenProject<cr>')
+            vim.keymap.set('n', '<leader>moc', ':MindClose<cr>')
+          EOF
+        '';
+      }
       {
         plugin = nvim-fzf;
         config = ''
