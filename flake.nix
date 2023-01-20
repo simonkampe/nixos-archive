@@ -78,6 +78,7 @@
       #  });
       #})
       (final: prev: {
+        /*
         jetbrains.jdk = prev.jetbrains.jdk.overrideAttrs (_: rec {
           version = "17.0.5-b653.23";
           src = prev.fetchFromGitHub {
@@ -107,7 +108,8 @@
             url = "https://download.jetbrains.com/python/pycharm-community-2022.3.1.tar.gz";
             sha256 = "b243103f27cfb763106a2f5667d8f201562154755ce9746e81e88c80acd7b316";
           };
-        });
+          });
+          */
       })
     ];
 
