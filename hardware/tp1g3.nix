@@ -42,7 +42,7 @@ in
   #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   #};
 
-  services.xserver.videoDrivers = [ "nvidia" "displaylink" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.systemPackages = [ nvidia-offload ];
   hardware.nvidia.powerManagement.enable = true;

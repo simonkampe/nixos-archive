@@ -123,6 +123,7 @@
           };
           overlays = self.overlays ++ [
             (final: prev: {
+               /*
               linuxPackages_latest = prev.linuxPackages_latest.extend (linux_final: linux_prev: {
                 evdi = linux_prev.evdi.overrideAttrs (evdi_final: evdi_prev: {
                   version = "1.12.0-git";
@@ -136,6 +137,7 @@
               });
 
               displaylink = prev.displaylink.override { inherit (final.linuxPackages_latest) evdi; };
+              */
             })
           ];
         };
