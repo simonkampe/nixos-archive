@@ -42,10 +42,11 @@ in
   #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   #};
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
   environment.systemPackages = [ nvidia-offload ];
   hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.open = true;
   hardware.nvidia.prime = {
     offload.enable = true;
   };
