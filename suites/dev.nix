@@ -5,6 +5,7 @@
     nixos-generators
     pinentry-gtk2
     docker-compose
+    config.boot.kernelPackages.perf
   ];
 
   # Enable gpg
