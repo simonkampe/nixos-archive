@@ -5,7 +5,7 @@
   users.users.simon = {
     description = "Simon Kämpe";
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "wireshark" "lp" "networkmanager" "input" ];
+    extraGroups = [ "wheel" "docker" "wireshark" "lp" "networkmanager" "input" "audio" ];
     password = "changethis";
     shell = pkgs.fish;
   };

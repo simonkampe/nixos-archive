@@ -18,6 +18,7 @@
   };
 
   services = {
+    fwupd.enable = true;
     resolved.enable = true;
     avahi = {
       enable = true;

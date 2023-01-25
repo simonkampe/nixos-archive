@@ -10,45 +10,73 @@ let
   '';
 in
 {
+  environment.systemPackages = [ nvidia-offload pkgs.libcamera ];
+
+  services.hardware.bolt.enable = true;
+  services.udev.extraRules = ''
+    # Always authorize thunderbolt connections when they are plugged in.
+    # This is to make sure the USB hub of Thunderbolt is working.
+    ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
+  '';
+
   hardware = {
     bluetooth = {
       enable = true;
     };
 
-    #pulseaudio = {
-    #  enable = true;
-    #  support32Bit = true;
-    #};
   };
 
-  #nixpkgs.config.pulseaudio = true;
-
+  ##############
+  # Sound
+  ##############
   # rtkit is optional but recommended
   security.rtkit.enable = true;
+  xdg.portal.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
+  environment.etc = {
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text =
+    ''
+      bluez_monitor.properties = {
+        ["bluez5.enable-sbc-xq"] = true,
+        ["bluez5.enable-msbc"] = true,
+        ["bluez5.enable-hw-volume"] = true,
+        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
+    '';
+  };
 
+  ##############
+  # Video
+  ##############
   # Fix DPI
   hardware.video.hidpi.enable = true;
-  #environment.variables = {
-  #  GDK_SCALE = "2";
-  #  GDK_DPI_SCALE = "0.5";
-  #  _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
-  #};
 
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  environment.systemPackages = [ nvidia-offload ];
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.open = true;
-  hardware.nvidia.prime = {
-    offload.enable = true;
+  hardware = {
+    nvidia = {
+      powerManagement.enable = true;
+      modesetting.enable = true;
+      open = true;
+      prime.offload.enable = true;
+    };
+
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
 
   #specialisation = {
