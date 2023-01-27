@@ -59,6 +59,11 @@ in
   # Fix DPI
   hardware.video.hidpi.enable = true;
 
+  # External monitor jankiness fix?
+  environment.sessionVariables = {
+    KWIN_DRM_USE_MODIFIERS="0";
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {

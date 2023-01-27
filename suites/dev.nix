@@ -6,6 +6,7 @@
     pinentry-gtk2
     docker-compose
     config.boot.kernelPackages.perf
+    virt-manager
   ];
 
   # Enable gpg
@@ -30,6 +31,9 @@
     enable = true;
     package = pkgs.unstable.vmware-workstation;
   };
+
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   virtualisation.docker.enable = true;
 
