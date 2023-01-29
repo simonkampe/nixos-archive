@@ -9,6 +9,7 @@
     stable.url = "github:NixOS/nixpkgs/nixos-22.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
+    hyprland.url = "github:hyprwm/Hyprland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home manager
@@ -28,6 +29,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    hyprland,
     ...
   }:
   let
@@ -121,7 +123,6 @@
           system = "x86_64-linux";
           config = {
             allowUnfree = true;
-            #allowBroken = true;
           };
           overlays = self.overlays ++ [
             (final: prev: {
@@ -150,8 +151,10 @@
           hosts/feynmann-secrets.nix
 
           # DE/WM
+          hyprland.nixosModules.default
           #graphical/sway.nix
           graphical/kde.nix
+          #graphical/hyprland.nix
 
           # Users
           users/simon.nix
@@ -252,6 +255,7 @@
           home/neovim.nix
           home/helix.nix
           home/kde.nix
+          #home/eww.nix
         ];
       };
     };

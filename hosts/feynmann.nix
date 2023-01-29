@@ -87,6 +87,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
 

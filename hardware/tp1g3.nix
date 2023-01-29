@@ -10,7 +10,11 @@ let
   '';
 in
 {
-  environment.systemPackages = [ nvidia-offload pkgs.libcamera ];
+  environment.systemPackages = [
+    nvidia-offload
+    pkgs.libcamera
+    pkgs.libinput
+  ];
 
   services.hardware.bolt.enable = true;
   services.udev.extraRules = ''
@@ -23,7 +27,6 @@ in
     bluetooth = {
       enable = true;
     };
-
   };
 
   ##############

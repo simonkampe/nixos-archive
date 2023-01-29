@@ -17,8 +17,6 @@
     brave
   ];
 
-  programs.nushell.enable = true;
-
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -186,7 +184,7 @@
           family = "FiraCode Nerd Font";
           style = "regular";
         };
-        size = 8.00;
+        size = 10.00;
       };
       colors = {
         primary = {
