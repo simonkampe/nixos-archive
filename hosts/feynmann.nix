@@ -87,7 +87,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.blacklistedKernelModules = [ "nouveau" ];
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
+  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" "nvidia-drm.modeset=1" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
 
@@ -96,6 +96,9 @@
     # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
     # https://github.com/umlaeute/v4l2loopback
     options v4l2loopback card_label="Virtual Camera"
+
+    # Fix nvidia crash on resume
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
   '';
 
   fileSystems."/" =

@@ -1,14 +1,20 @@
 { lib, pkgs, config, ... }:
 {
   programs.hyprland.enable = true;
-  
+
   services.xserver = {
     enable = true;
-    desktopManager = {
-      xterm.enable = false;
-    };
-    displayManager.gdm = {
+
+    desktopManager.xterm.enable = false;
+
+    displayManager.sddm = {
       enable = true;
+      theme = "${(pkgs.fetchFromGitHub {
+        owner = "Kangie";
+        repo = "sddm-sugar-candy";
+        rev = "a1fae5159c8f7e44f0d8de124b14bae583edb5b8";
+        sha256 = "sha256-p2d7I0UBP63baW/q9MexYJQcqSmZ0L5rkwK3n66gmqM=";
+      })}";
     };
   };
 
@@ -16,20 +22,34 @@
   programs.seahorse.enable = true;
 
   fonts.fonts = with pkgs; [
-    material-icons
-    material-design-icons
   ];
 
   programs.dconf.enable = true;
 
   networking.networkmanager.enable = true;
 
+  # USB auto mount
+  services.udisks2.enable = true;
+
+  # Samba etc.
+  services.gvfs.enable = true;
+
   environment.systemPackages = with pkgs; [
-    eww-wayland # Bar
+    waybar # Bar
     wofi # Launcher
-    dunst # Notifications
-    lxappearance
-    networkmanagerapplet
-    libinput
+
+    # File manager
+    xfce.thunar
+    xfce.thunar-volman
+
+    pavucontrol # Sound settings
+    pulseaudio # For pactl
+
+    networkmanagerapplet # Network
+
+    brightnessctl # Backlight
+
+    # SDDM
+    libsForQt5.qt5.qtgraphicaleffects
   ];
 }

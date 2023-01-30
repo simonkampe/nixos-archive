@@ -7,6 +7,13 @@
     docker-compose
     config.boot.kernelPackages.perf
     virt-manager
+
+    # IDEs
+    unstable.jetbrains.clion
+    unstable.jetbrains.pycharm-community
+
+    # Networking
+    wireshark
   ];
 
   # Enable gpg

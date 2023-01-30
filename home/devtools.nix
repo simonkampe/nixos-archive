@@ -1,22 +1,19 @@
 { config, pkgs, ... }:
 
 {
+  # Link stuff currently unsupported by home-manager
+  xdg = {
+    enable = true;
+    configFile."cargo" = {
+      source = config/cargo;
+      recursive = true;
+    };
+  };
+
   # Extra utilities
   home.packages = with pkgs; [
     git-crypt
     gh # GitHub CLI
-    influxdb
-    wireshark
-    nmap
-    inetutils
-    jetbrains.clion
-    jetbrains.pycharm-community
-    octaveFull
-    unstable.sniffnet
-    screen
-    arduino
-    inxi
-    iperf
   ];
 
   programs.direnv = {

@@ -41,7 +41,6 @@
 
         # Temporarily allowed unsecure packages
         permittedInsecurePackages = [
-          #"qtwebkit-5.212.0-alpha4"
         ];
 
       };
@@ -74,45 +73,6 @@
           config.allowUnfree = true;
         };
       })
-      #(final: prev: {
-      #  vmware-modules = prev.vmware-modules.overrideAttrs(_: {
-      #  
-      #  });
-      #})
-      (final: prev: {
-        /*
-        jetbrains.jdk = prev.jetbrains.jdk.overrideAttrs (_: rec {
-          version = "17.0.5-b653.23";
-          src = prev.fetchFromGitHub {
-            owner = "JetBrains";
-            repo = "JetBrainsRuntime";
-            rev = "jb${version}";
-            hash = "sha256-7Nx7Y12oMfs4zeQMSfnUaDCW1xJYMEkcoTapSpmVCfU=";
-          };
-        });
-        jetbrains.clion = prev.jetbrains.clion.overrideAttrs (_: rec {
-          version = "2022.3.1";
-          src = prev.fetchurl {
-            url = "https://download.jetbrains.com/cpp/CLion-2022.3.1.tar.gz";
-            sha256 = "cd057a0aa96cf5b4216a436136a1002e6f3dc578bcd8a69f98d6908381b03526";
-          };
-        });
-        jetbrains.idea-community = prev.jetbrains.idea-community.overrideAttrs (_: rec {
-          version = "2022.3.1";
-          src = prev.fetchurl {
-            url = "https://download.jetbrains.com/idea/ideaIC-2022.3.1.tar.gz";
-            sha256 = "4c3514642ce6c86e5343cc29b01c06ddc9c55f134bcb6650de5d7d36205799e8";
-          };
-        });
-        jetbrains.pycharm-community = prev.jetbrains.pycharm-community.overrideAttrs (_: rec {
-          version = "2022.3.1";
-          src = prev.fetchurl {
-            url = "https://download.jetbrains.com/python/pycharm-community-2022.3.1.tar.gz";
-            sha256 = "b243103f27cfb763106a2f5667d8f201562154755ce9746e81e88c80acd7b316";
-          };
-          });
-          */
-      })
     ];
 
     nixosConfigurations = {
@@ -124,25 +84,7 @@
           config = {
             allowUnfree = true;
           };
-          overlays = self.overlays ++ [
-            (final: prev: {
-               /*
-              linuxPackages_latest = prev.linuxPackages_latest.extend (linux_final: linux_prev: {
-                evdi = linux_prev.evdi.overrideAttrs (evdi_final: evdi_prev: {
-                  version = "1.12.0-git";
-                  src = prev.fetchFromGitHub {
-                    owner = "DisplayLink";
-                    repo = "evdi";
-                    rev = "bdc258b25df4d00f222fde0e3c5003bf88ef17b5";
-                    sha256 = "sha256-7Nx7Y12oMfs4zeQMSfnUaDCW1xJYMEkcoTapSpmVCfU=";
-                  };
-                });
-              });
-
-              displaylink = prev.displaylink.override { inherit (final.linuxPackages_latest) evdi; };
-              */
-            })
-          ];
+          overlays = self.overlays;
         };
 
         modules = [
@@ -151,10 +93,9 @@
           hosts/feynmann-secrets.nix
 
           # DE/WM
-          hyprland.nixosModules.default
-          #graphical/sway.nix
-          graphical/kde.nix
+          #hyprland.nixosModules.default
           #graphical/hyprland.nix
+          graphical/kde.nix
 
           # Users
           users/simon.nix
@@ -162,7 +103,7 @@
           # Software
           common/common.nix
           common/locale.nix
-          suites/common_utils.nix
+          suites/common.nix
           suites/dev.nix
           suites/multimedia.nix
           suites/office.nix
@@ -189,7 +130,7 @@
           # Host
           hosts/mendelevium.nix
 
-	  # DE/WM
+	        # DE/WM
           #graphical/sway.nix
           graphical/kde.nix
 
@@ -199,7 +140,7 @@
           # Software
           common/common.nix
           common/locale.nix
-          suites/common_utils.nix
+          suites/common.nix
           suites/dev.nix
           suites/multimedia.nix
           suites/office.nix
@@ -213,30 +154,6 @@
           nixos-hardware.nixosModules.common-cpu-intel
         ];
       };
-
-      marie = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-	  # DE/WM
-          #graphical/sway.nix
-          graphical/kde.nix
-
-          # Users
-          users/simon.nix
-
-          # Software
-          hosts/marie.nix
-          common/common.nix
-          common/locale.nix
-          suites/common_utils.nix
-
-          # Hardware
-          nixos-hardware.nixosModules.common-cpu-intel
-        ];
-
-        inherit pkgs;
-      };
     };
 
     homeConfigurations = {
@@ -249,13 +166,13 @@
 
         modules = [
           inputs.plasma-manager.homeManagerModules.plasma-manager
+          home/kde.nix
+
           home/simon.nix
           home/devtools.nix
           home/common.nix
           home/neovim.nix
           home/helix.nix
-          home/kde.nix
-          #home/eww.nix
         ];
       };
     };

@@ -34,7 +34,6 @@ in
   ##############
   # rtkit is optional but recommended
   security.rtkit.enable = true;
-  xdg.portal.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -62,11 +61,6 @@ in
   # Fix DPI
   hardware.video.hidpi.enable = true;
 
-  # External monitor jankiness fix?
-  environment.sessionVariables = {
-    KWIN_DRM_USE_MODIFIERS="0";
-  };
-
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
@@ -79,11 +73,6 @@ in
 
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
   };
 
