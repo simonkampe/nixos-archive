@@ -73,6 +73,15 @@
           config.allowUnfree = true;
         };
       })
+
+      (final: prev: {
+        waybar = prev.waybar.overrideAttrs (old: {
+          patchPhase = ''
+            sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
+          '';
+          mesonFlags = old.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
+      })
     ];
 
     nixosConfigurations = {
@@ -93,9 +102,9 @@
           hosts/feynmann-secrets.nix
 
           # DE/WM
-          #hyprland.nixosModules.default
-          #graphical/hyprland.nix
-          graphical/kde.nix
+          hyprland.nixosModules.default
+          graphical/hyprland.nix
+          #graphical/kde.nix
 
           # Users
           users/simon.nix

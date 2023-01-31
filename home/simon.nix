@@ -49,6 +49,9 @@
     unrar
     unzip
     xcp
+
+    # Terminal
+    alacritty
   ];
 
   programs.fish = {
@@ -177,6 +180,13 @@
     enableAliases = true;
   };
 
+  xdg = {
+    configFile."alacritty" = {
+      source = ./config/alacritty;
+      recursive = true;
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
@@ -185,6 +195,11 @@
         decorations = "full";
         title = "Alacritty";
         dynamic_title = true;
+        padding = {
+          x = 10;
+          y = 10;
+        };
+        dynamic_padding = true;
         class = {
           instance = "Alacritty";
           general = "Alacritty";
@@ -209,12 +224,9 @@
         };
         size = 10.00;
       };
-      colors = {
-        primary = {
-          background = "#1d1f21";
-          foreground = "#c5c8c6";
-        };
-      };
+      import = [
+        config/alacritty/colors/catppuccin-frappe.yml
+      ];
     };
   };
 

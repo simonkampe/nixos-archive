@@ -4,15 +4,7 @@
   services.xserver = {
     enable = true;
     desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      theme = "${(pkgs.fetchFromGitHub {
-        owner = "Kangie";
-        repo = "sddm-sugar-candy";
-        rev = "a1fae5159c8f7e44f0d8de124b14bae583edb5b8";
-        sha256 = "sha256-p2d7I0UBP63baW/q9MexYJQcqSmZ0L5rkwK3n66gmqM=";
-      })}";
-    };
+    displayManager.sddm.enable = true;
   };
 
   # External monitor lag fix
