@@ -65,14 +65,23 @@ in
 
   hardware = {
     nvidia = {
-      powerManagement.enable = true;
+      powerManagement.enable = false;
       modesetting.enable = true;
-      open = true;
+      open = false;
+
       prime.offload.enable = true;
+      #prime.sync.enable = true;
+      prime = {
+        # Bus ID of the Intel GPU.
+        intelBusId = lib.mkDefault "PCI:0:2:0";
+        # Bus ID of the NVIDIA GPU.
+        nvidiaBusId = lib.mkDefault "PCI:1:0:0";
+      };
     };
 
     opengl = {
       enable = true;
+      driSupport32Bit = true;
     };
   };
 

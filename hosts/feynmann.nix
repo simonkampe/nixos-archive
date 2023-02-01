@@ -27,32 +27,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  services = {
-    # Disable this to enable tlp
-    power-profiles-daemon.enable = true;
-    tlp = {
-      enable = false;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_SCALING_GOVERNOR_ON_AC="performance";
-
-        # The following prevents the battery from charging fully to
-        # preserve lifetime. Run `tlp fullcharge` to temporarily force
-        # full charge.
-        # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-        START_CHARGE_THRESH_BAT0=80;
-        STOP_CHARGE_THRESH_BAT0=95;
-
-        # 100 being the maximum, limit the speed of my CPU to reduce
-        # heat and increase battery usage:
-        CPU_MAX_PERF_ON_AC=100;
-        CPU_MAX_PERF_ON_BAT=70;
-      };
-    };
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -87,7 +61,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
   boot.blacklistedKernelModules = [ "nouveau" ];
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" "nvidia-drm.modeset=1" ];
+  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
 

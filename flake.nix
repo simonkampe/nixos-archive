@@ -102,9 +102,9 @@
           hosts/feynmann-secrets.nix
 
           # DE/WM
-          hyprland.nixosModules.default
-          graphical/hyprland.nix
-          #graphical/kde.nix
+          #hyprland.nixosModules.default
+          #graphical/hyprland.nix
+          graphical/kde.nix
 
           # Users
           users/simon.nix
@@ -121,8 +121,9 @@
           suites/linetic.nix
 
           # Hardware
+          #nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
+          nixos-hardware.nixosModules.common-cpu-intel
           hardware/tp1g3.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
         ];
       };
 
@@ -136,6 +137,10 @@
         };
 
         modules = [
+          # Hardware
+          nixos-hardware.nixosModules.common-gpu-nvidia
+          nixos-hardware.nixosModules.common-cpu-intel
+          
           # Host
           hosts/mendelevium.nix
 
@@ -157,10 +162,6 @@
           suites/making.nix
           suites/simra.nix
           suites/gaming.nix
-
-          # Hardware
-          nixos-hardware.nixosModules.common-gpu-nvidia
-          nixos-hardware.nixosModules.common-cpu-intel
         ];
       };
     };

@@ -2,8 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     thunderbird
-    master.teams
-    master.teams-for-linux
     globalprotect-openconnect
   ];
 
