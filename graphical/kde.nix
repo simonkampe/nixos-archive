@@ -12,8 +12,11 @@
     KWIN_DRM_USE_MODIFIERS="0";
   };
 
+  services.power-profiles-daemon.enable = true;
+
   environment.systemPackages = with pkgs; [
     nordic
+    libsForQt5.powerdevil
     libsForQt5.kio-gdrive
     libsForQt5.kaccounts-providers
     libsForQt5.kaccounts-integration
