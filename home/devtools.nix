@@ -67,6 +67,9 @@
       log = {
         follow = "true";
       };
+      merge = {
+        ff = "only";
+      };
       pull = {
         ff = "only";
         rebase = "true";
