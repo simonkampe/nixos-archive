@@ -2,16 +2,15 @@
 {
   environment.systemPackages = with pkgs; [
     wpsoffice
-    zoom-us
     obs-studio
     cifs-utils
     samba
     remmina # RDP client
+    teamviewer
   ];
 
   services = {
     onedrive.enable = true;
-    teamviewer.enable = true;
 
     printing = {
       enable = true;

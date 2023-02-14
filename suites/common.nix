@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    brave
-
     # Keyboard
     uhk-agent
     wally-cli

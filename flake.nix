@@ -124,6 +124,7 @@
           #nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
           nixos-hardware.nixosModules.common-cpu-intel
           hardware/tp1g3.nix
+          hardware/tlp.nix
         ];
       };
 
@@ -177,6 +178,8 @@
         modules = [
           inputs.plasma-manager.homeManagerModules.plasma-manager
           home/kde.nix
+
+          home/graphical.nix
 
           home/simon.nix
           home/devtools.nix
