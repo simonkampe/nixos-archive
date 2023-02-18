@@ -88,7 +88,7 @@
       feynmann = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        pkgs = (import inputs.stable) {
+        pkgs = (import inputs.unstable) {
           system = "x86_64-linux";
           config = {
             allowUnfree = true;
@@ -131,7 +131,7 @@
       mendelevium = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        pkgs = (import inputs.stable) {
+        pkgs = (import inputs.unstable) {
           system = "x86_64-linux";
           config.allowUnfree = true;
           overlays = self.overlays;
