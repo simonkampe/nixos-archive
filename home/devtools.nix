@@ -14,6 +14,10 @@
   home.packages = with pkgs; [
     git-crypt
     gh # GitHub CLI
+
+    # Serial comm
+    minicom
+    screen
   ];
 
   programs.direnv = {
