@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    wpsoffice
+    stable.wpsoffice
     obs-studio
     cifs-utils
     samba
