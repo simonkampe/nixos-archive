@@ -99,7 +99,6 @@
         modules = [
           # Host
           hosts/feynmann.nix
-          hosts/feynmann-secrets.nix
 
           # DE/WM
           #hyprland.nixosModules.default
