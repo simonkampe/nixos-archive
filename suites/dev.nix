@@ -44,6 +44,9 @@
 
   virtualisation.docker.enable = true;
 
+  programs.adb.enable = true;
+  services.udev.packages = [ pkgs.android-udev-rules ];
+
   # Add udev for MCC DAQ
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="09db", ATTRS{idProduct}=="*", GROUP="users", MODE="0660"
