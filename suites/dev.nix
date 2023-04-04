@@ -9,8 +9,7 @@
     virt-manager
 
     # IDEs
-    unstable.jetbrains.clion
-    unstable.jetbrains.pycharm-community
+    master.jetbrains.pycharm-community
 
     # Networking
     wireshark
