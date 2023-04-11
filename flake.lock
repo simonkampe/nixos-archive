@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "extras": {
+      "locked": {
+        "lastModified": 1681191071,
+        "narHash": "sha256-EgKby2lpFKXfgAGPZSx3+p+os2CuaKG6AnBOapK1n94=",
+        "owner": "simonkampe",
+        "repo": "nixpkgs",
+        "rev": "734d33a1d56a71fdb2629f83b75286e43f2f75fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "simonkampe",
+        "ref": "extras",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -136,6 +152,7 @@
     },
     "root": {
       "inputs": {
+        "extras": "extras",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "master": "master",

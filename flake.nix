@@ -6,9 +6,13 @@
   inputs = {
     # System
     nixpkgs.follows = "stable";
+
+    # Extra channels
     stable.url = "github:NixOS/nixpkgs/nixos-22.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
+    extras.url = "github:simonkampe/nixpkgs/extras";
+
     hyprland.url = "github:hyprwm/Hyprland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -68,7 +72,7 @@
         };
       })
       (final: prev: {
-        fork = import inputs.fork {
+        extras = import inputs.extras {
           system = final.system;
           config.allowUnfree = true;
         };
@@ -123,7 +127,7 @@
           #nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
           nixos-hardware.nixosModules.common-cpu-intel
           hardware/tp1g3.nix
-          hardware/tlp.nix
+          #hardware/tlp.nix
         ];
       };
 
