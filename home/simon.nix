@@ -139,7 +139,7 @@
       wally = {
         body = ''
           set tmpfile (mktemp).bin
-          wget https://oryx.zsa.io/BP4GQ/latest/binary -O $tmpfile
+          wget https://oryx.zsa.io/$argv/latest/binary -O $tmpfile
           sudo wally-cli $tmpfile
         '';
       };
