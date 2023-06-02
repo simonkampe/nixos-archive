@@ -8,7 +8,7 @@
     nixpkgs.follows = "stable";
 
     # Extra channels
-    stable.url = "github:NixOS/nixpkgs/nixos-22.11";
+    stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     extras.url = "github:simonkampe/nixpkgs/extras";
@@ -92,7 +92,7 @@
       feynmann = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        pkgs = (import inputs.unstable) {
+        pkgs = (import inputs.stable) {
           system = "x86_64-linux";
           config = {
             allowUnfree = true;

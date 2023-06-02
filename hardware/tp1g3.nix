@@ -77,9 +77,6 @@ in
   ##############
   # Video
   ##############
-  # Fix DPI
-  hardware.video.hidpi.enable = true;
-
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
