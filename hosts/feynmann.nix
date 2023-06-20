@@ -17,6 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" "nfs" ];
+  boot.tmp.useTmpfs = true;
 
   networking.hostName = "feynmann"; # Define your hostname.
   # Pick only one of the below networking options.

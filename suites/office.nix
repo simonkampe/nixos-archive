@@ -11,6 +11,7 @@
 
   services = {
     onedrive.enable = true;
+    teamviewer.enable = true;
 
     printing = {
       enable = true;
