@@ -11,7 +11,7 @@
     master.url = "github:NixOS/nixpkgs/master";
     extras.url = "github:simonkampe/nixpkgs/extras";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # Utilities
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home manager
@@ -31,7 +31,6 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    hyprland,
     ...
   }:
   let
@@ -74,15 +73,6 @@
           system = final.system;
           config.allowUnfree = true;
         };
-      })
-
-      (final: prev: {
-        waybar = prev.waybar.overrideAttrs (old: {
-          patchPhase = ''
-            sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
-          '';
-          mesonFlags = old.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
       })
     ];
 
