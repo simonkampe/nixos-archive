@@ -1,8 +1,6 @@
 {
   description = "Structured configuration database";
 
-  nixConfig.extra-experimental-features = "nix-command flakes";
-
   inputs = {
     # System
     nixpkgs.follows = "stable";

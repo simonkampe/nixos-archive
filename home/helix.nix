@@ -4,7 +4,7 @@
   programs.helix = {
     enable = true;
 
-    languages = [ ];
+    languages = { language = [ ]; };
 
     settings = {
       theme = "nord";
