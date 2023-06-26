@@ -11,7 +11,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -78,33 +78,34 @@
   [ (modulesPath + "/installer/scan/not-detected.nix")
   ];
   
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   
   fileSystems."/" =
-  { device = "/dev/disk/by-uuid/c72de9a7-676d-440b-85ee-1e368e5b68a2";
+  { device = "/dev/disk/by-uuid/a67d0add-e227-4b50-bda1-c0ed146072e8";
   fsType = "ext4";
   };
   
   fileSystems."/boot" =
-  { device = "/dev/disk/by-uuid/7584-C00E";
+  { device = "/dev/disk/by-uuid/E399-8371";
   fsType = "vfat";
   };
   
   swapDevices =
-  [ { device = "/dev/disk/by-uuid/b4ab9039-4bb0-4091-bfc4-07a4b02ae611"; }
+  [ { device = "/dev/disk/by-uuid/59d48ca4-8b3e-4a64-9e1a-2ea17617d006"; }
   ];
 
   fileSystems."/data" =
   { device = "/dev/disk/by-label/data";
   fsType = "ext4";
+  options = [ "nofail" ];
   };
   
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  #hardware.video.hidpi.enable = lib.mkDefault true;
 }
 
