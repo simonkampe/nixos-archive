@@ -98,6 +98,7 @@ in
     opengl = {
       enable = true;
       driSupport32Bit = true;
+      extraPackages32 = pkgs.lib.mkForce [ pkgs.linuxPackages_latest.nvidia_x11.lib32 ]; # Fix vaapi build error by not building it.
     };
   };
 
