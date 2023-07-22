@@ -3,7 +3,9 @@
   home.packages = with pkgs; [
     brave
 
-    extras.jetbrains.clion
+    master.jetbrains.clion
+    master.jetbrains.pycharm-community
+    master.android-studio
 
     # Note taking
     obsidian

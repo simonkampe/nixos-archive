@@ -9,7 +9,6 @@
     virt-manager
 
     # IDEs
-    master.jetbrains.pycharm-community
 
     # Networking
     wireshark
