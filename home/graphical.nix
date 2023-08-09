@@ -1,13 +1,13 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    brave
+    unstable.brave
 
-    master.jetbrains.clion
-    master.jetbrains.pycharm-community
-    master.android-studio
+    unstable.jetbrains.clion
+    unstable.jetbrains.pycharm-community
+    #master.android-studio
 
     # Note taking
-    obsidian
+    unstable.obsidian
   ];
 }
