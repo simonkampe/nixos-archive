@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     unstable.brave
+    unstable.zoom-us
 
     unstable.jetbrains.clion
     unstable.jetbrains.pycharm-community
