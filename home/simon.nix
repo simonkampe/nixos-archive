@@ -148,7 +148,9 @@
     shellAbbrs = {
       clion = "clion . 1>/dev/null 2>&1 &";
       idea = "idea-community . 1>/dev/null 2>&1 &";
-      pycharm = "pycharm-community . 1>/dev/null 2>&1 &";
+      pycharm-ce = "pycharm-community . 1>/dev/null 2>&1 &";
+      pycharm = "pycharm-professional . 1>/dev/null 2>&1 &";
+      webstorm = "webstorm . 1>/dev/null 2>&1 &";
     };
 
     shellAliases = {

@@ -5,7 +5,8 @@
     unstable.zoom-us
 
     unstable.jetbrains.clion
-    unstable.jetbrains.pycharm-community
+    unstable.jetbrains.pycharm-professional
+    unstable.jetbrains.webstorm
     #master.android-studio
 
     # Note taking

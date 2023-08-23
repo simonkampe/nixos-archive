@@ -109,6 +109,7 @@
           suites/office.nix
           suites/social.nix
           suites/making.nix
+          suites/antivirus.nix
           suites/linetic.nix
 
           # Hardware
