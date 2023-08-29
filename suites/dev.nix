@@ -34,7 +34,7 @@
   # Virtualization
   virtualisation.vmware.host = {
     enable = true;
-    package = pkgs.unstable.vmware-workstation;
+    package = pkgs.vmware-workstation;
   };
 
   virtualisation.libvirtd.enable = true;

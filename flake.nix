@@ -55,20 +55,17 @@
           system = final.system;
           config.allowUnfree = true;
         };
-      })
-      (final: prev: {
+
         unstable = import inputs.unstable {
           system = final.system;
           config.allowUnfree = true;
         };
-      })
-      (final: prev: {
+
         master = import inputs.master {
           system = final.system;
           config.allowUnfree = true;
         };
-      })
-      (final: prev: {
+
         extras = import inputs.extras {
           system = final.system;
           config.allowUnfree = true;
