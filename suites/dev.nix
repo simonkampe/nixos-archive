@@ -26,7 +26,9 @@
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
+    sandbox = relaxed
   '';
+
   environment.pathsToLink = [
     "/share/nix-direnv"
   ];

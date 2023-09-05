@@ -49,10 +49,24 @@
     unrar
     unzip
     xcp
+    gittyup
 
     # Terminal
     alacritty
   ];
+
+  nix = {
+    package = pkgs.nix;
+
+    settings = {
+      sandbox = "relaxed";
+      show-trace = true;
+    };
+
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   programs.fish = {
     enable = true;
