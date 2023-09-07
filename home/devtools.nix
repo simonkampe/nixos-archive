@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     git-crypt
     gh # GitHub CLI
+    cloc
 
     # Serial comm
     minicom
