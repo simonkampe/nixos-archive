@@ -61,7 +61,12 @@
     prime.offload.enable = false;
     powerManagement.enable = true;
   };
-  hardware.opengl.driSupport32Bit = true;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+    extraPackages32 = pkgs.lib.mkForce [ pkgs.linuxPackages_latest.nvidia_x11.lib32 ]; # Fix vaapi build error by not building it.
+  };
 
   # rtkit is optional but recommended
   security.rtkit.enable = true;

@@ -120,7 +120,7 @@
       mendelevium = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        pkgs = (import inputs.unstable) {
+        pkgs = (import inputs.stable) {
           system = "x86_64-linux";
           config.allowUnfree = true;
           overlays = self.overlays;
