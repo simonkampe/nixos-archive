@@ -71,8 +71,8 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set -gx EDITOR vim
-      set -gx VISUAL vim
+      set -gx EDITOR hx
+      set -gx VISUAL hx
       set -gx NIX_SHELL_PRESERVE_PROMPT 1
 
       fish_add_path /home/simon/.cargo/bin
