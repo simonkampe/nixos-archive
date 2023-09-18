@@ -26,10 +26,10 @@
       };
     };
 
-    files."kwinrc"."Windows"."RollOverDesktops" = false;
-    files."kcminputrc"."Mouse"."cursorTheme" = "Qogir-dark";
-    files."kdeglobals"."Icons"."Theme" = "Tela-dark";
-    files."kdeglobals"."KDE"."widgetStyle" = "Lightly";
+    configFile."kwinrc"."Windows"."RollOverDesktops" = false;
+    configFile."kcminputrc"."Mouse"."cursorTheme" = "Qogir-dark";
+    configFile."kdeglobals"."Icons"."Theme" = "Tela-dark";
+    configFile."kdeglobals"."KDE"."widgetStyle" = "Lightly";
   };
 
   home.packages = with pkgs; [

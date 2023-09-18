@@ -170,6 +170,7 @@
     shellAliases = {
       flake = "nix flake";
       cp = "xcp";
+      ls = "eza";
     };
   };
 
@@ -191,7 +192,7 @@
     enableFishIntegration = true;
   };
 
-  programs.exa = {
+  programs.eza = {
     enable = true;
     enableAliases = true;
   };
