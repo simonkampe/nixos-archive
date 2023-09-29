@@ -28,6 +28,8 @@
     curl
     nmap
     wget
+    inetutils
+    sqlite
 
     # Filesystem
     parted
