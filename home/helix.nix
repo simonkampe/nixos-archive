@@ -81,17 +81,17 @@
             tabpad = "all";
           };
           characters = {
-            space = "·";
+            space = " ";
             nbsp = "⍽";
             tab = "→";
             newline = "⏎";
-            tabpad = "·"; # Tabs will look like "→···" (depending on tab width)
+            tabpad = " "; # Tabs will look like "→···" (depending on tab width)
           };
         };
 
         indent-guides = {
           render = true;
-          character = "╎"; # Some characters that work well: "▏", "┆", "┊", "⸽"
+          character = "▏"; # Some characters that work well: "▏", "┆", "┊", "⸽"
           skip-levels = 1;
         };
 

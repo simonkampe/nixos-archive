@@ -13,6 +13,10 @@
 
     # Utilities
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Home manager
     home-manager = {
@@ -31,6 +35,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    nix-alien,
     ...
   }:
   let
@@ -70,6 +75,8 @@
           system = final.system;
           config.allowUnfree = true;
         };
+
+        nix-alien = inputs.nix-alien.packages.${final.system}.nix-alien;
       })
     ];
 

@@ -7,12 +7,15 @@
     docker-compose
     config.boot.kernelPackages.perf
     virt-manager
+    nix-alien
 
     # IDEs
 
     # Networking
     wireshark
   ];
+
+  programs.nix-ld.enable = true;
 
   # Enable gpg
   services.pcscd.enable = true;
