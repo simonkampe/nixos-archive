@@ -8,6 +8,7 @@
     unstable.jetbrains.pycharm-professional
     unstable.jetbrains.webstorm
     unstable.jetbrains.rider
+    unstable.jetbrains.rust-rover
     #master.android-studio
 
     # Note taking
