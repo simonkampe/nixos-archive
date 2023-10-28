@@ -168,6 +168,7 @@
       pycharm = "pycharm-professional . 1>/dev/null 2>&1 &";
       webstorm = "webstorm . 1>/dev/null 2>&1 &";
       rider = "rider . 1>/dev/null 2>&1 &";
+      rust-rover = "rust-rover . 1>/dev/null 2>&1 &";
     };
 
     shellAliases = {

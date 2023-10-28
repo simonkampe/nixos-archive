@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  nix.nixPath = [ "nixpkgs=${pkgs.outPath}" ];
+
   environment.systemPackages = with pkgs; [
     # Keyboard
     uhk-agent
