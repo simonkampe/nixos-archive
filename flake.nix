@@ -40,18 +40,6 @@
   }:
   let
     inherit (builtins) attrValues;
-    pkgs = (import inputs.nixpkgs) {
-      system = "x86_64-linux";
-      config = {
-        allowUnfree = true;
-
-        # Temporarily allowed unsecure packages
-        permittedInsecurePackages = [
-        ];
-
-      };
-      overlays = self.overlays;
-    };
   in
   {
     overlays = [
@@ -69,6 +57,7 @@
         master = import inputs.master {
           system = final.system;
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [ "snapmaker-luban-4.9.1" ];
         };
 
         extras = import inputs.extras {
@@ -90,7 +79,7 @@
             allowUnfree = true;
           };
           overlays = self.overlays;
-        };
+        } // { outPath = inputs.stable.outPath; };
 
         modules = [
           # Host
@@ -129,7 +118,9 @@
 
         pkgs = (import inputs.stable) {
           system = "x86_64-linux";
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+          };
           overlays = self.overlays;
         };
 
