@@ -4,13 +4,6 @@
   programs.helix = {
     enable = true;
 
-    languages = { 
-      language = [{
-        name = "cpp";
-        language-server = { command = "clangd"; };
-      }];
-    };
-
     settings = {
       theme = "nord";
 
