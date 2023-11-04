@@ -104,6 +104,7 @@
           suites/making.nix
           suites/antivirus.nix
           suites/linetic.nix
+          suites/gaming.nix
 
           # Hardware
           #nixos-hardware.nixosModules.lenovo-thinkpad-p1-gen3
