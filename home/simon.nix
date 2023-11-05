@@ -201,6 +201,11 @@
     enableAliases = true;
   };
 
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   xdg = {
     configFile."alacritty" = {
       source = ./config/alacritty;
