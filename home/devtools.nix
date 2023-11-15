@@ -19,6 +19,10 @@
     # Serial comm
     minicom
     screen
+
+    # Nix lang
+    nil
+    nixfmt
   ];
 
   programs.direnv = {
