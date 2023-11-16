@@ -14,12 +14,12 @@
     enable = true;
 
     wrappedBinaries = {
-      kauto = {
+      kauto-office = {
         executable = "${pkgs.chromium}/bin/chromium https://outlook.office.com https://teams.microsoft.com";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
         extraArgs = [ "--private=~/.local/share/firejail/chromium-kauto" ];
       };
-      esab = {
+      esab-office = {
         executable = "${pkgs.chromium}/bin/chromium https://outlook.office.com https://teams.microsoft.com";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
         extraArgs = [ "--private=~/.local/share/firejail/chromium-esab" ];

@@ -174,6 +174,7 @@
           home/common.nix
           home/neovim.nix
           home/helix.nix
+          home/office.nix
         ];
       };
     };
