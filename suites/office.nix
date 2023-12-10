@@ -15,12 +15,12 @@
 
     wrappedBinaries = {
       kauto-office = {
-        executable = "${pkgs.chromium}/bin/chromium https://outlook.office.com https://teams.microsoft.com";
+        executable = "${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland https://outlook.office.com https://teams.microsoft.com";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
         extraArgs = [ "--private=~/.local/share/firejail/chromium-kauto" ];
       };
       esab-office = {
-        executable = "${pkgs.chromium}/bin/chromium https://outlook.office.com https://teams.microsoft.com";
+        executable = "${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland https://outlook.office.com https://teams.microsoft.com";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
         extraArgs = [ "--private=~/.local/share/firejail/chromium-esab" ];
       };
