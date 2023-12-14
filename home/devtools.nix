@@ -90,6 +90,9 @@
         prune = "true";
         pruneTags = "true";
       };
+      rerere = {
+        enabled = "true";
+      };
     };
   };
 }
