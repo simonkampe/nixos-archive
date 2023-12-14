@@ -57,7 +57,7 @@
         master = import inputs.master {
           system = final.system;
           config.allowUnfree = true;
-          config.permittedInsecurePackages = [ "snapmaker-luban-4.9.1" ];
+          config.permittedInsecurePackages = [ "snapmaker-luban-4.9.1" "electron-25.9.0" ];
         };
 
         extras = import inputs.extras {
