@@ -12,6 +12,6 @@
     #master.android-studio
 
     # Note taking
-    unstable.obsidian
+    master.obsidian
   ];
 }
